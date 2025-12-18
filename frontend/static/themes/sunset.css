@@ -1,141 +1,912 @@
 /**
  * sunset.css
- * Sunset Theme for CheatSheeter
- * Warm oranges and purples inspired by sunset
+ * Sunset Theme for CheatSheeter - COMPREHENSIVE EDITION
+ * Warm, cozy aesthetics inspired by golden hour and twilight
+ * Rich oranges, purples, and deep reds with atmospheric glow
  */
 
 :root {
-    /* Background Colors */
-    --bg-primary: #2d1b1b;
-    --bg-secondary: #4a2d2d;
-    --bg-tertiary: #5f3d3d;
+    /* Background Colors - Twilight Sky */
+    --bg-primary: #1a0d0a;
+    --bg-secondary: #2d1a14;
+    --bg-tertiary: #4a2a1f;
+    --bg-quaternary: #5f3a2d;
+    --bg-elevated: #241410;
 
     /* Text Colors */
-    --text-primary: #ffe8e8;
-    --text-secondary: #ffb3a7;
+    --text-primary: #ffe8e0;
+    --text-secondary: #ffb39d;
+    --text-tertiary: #ff8a65;
+    --text-muted: #d84315;
+
+    /* Sunset Accent Colors */
+    --sunset-orange: #ff6d00;
+    --sunset-coral: #ff5252;
+    --sunset-gold: #ffab00;
+    --sunset-amber: #ff9100;
+    --sunset-purple: #7c4dff;
+    --sunset-pink: #f50057;
+
+    /* Atmospheric Glows */
+    --glow-orange: 0 0 10px rgba(255, 109, 0, 0.6), 0 0 20px rgba(255, 109, 0, 0.4);
+    --glow-coral: 0 0 10px rgba(255, 82, 82, 0.6), 0 0 20px rgba(255, 82, 82, 0.4);
+    --glow-gold: 0 0 10px rgba(255, 171, 0, 0.6), 0 0 20px rgba(255, 171, 0, 0.4);
+    --glow-purple: 0 0 10px rgba(124, 77, 255, 0.6), 0 0 20px rgba(124, 77, 255, 0.4);
 
     /* Border Colors */
-    --border-color: #5f3d3d;
+    --border-color: #4a2a1f;
+    --border-glow: rgba(255, 109, 0, 0.5);
 
     /* Shadows */
-    --shadow-sm: 0 .125rem .25rem rgba(0,0,0,.4);
-    --shadow-md: 0 .5rem 1rem rgba(0,0,0,.6);
+    --shadow-sm: 0 2px 4px rgba(26,13,10,0.5);
+    --shadow-md: 0 4px 8px rgba(26,13,10,0.6);
+    --shadow-lg: 0 10px 20px rgba(26,13,10,0.7);
+    --shadow-xl: 0 20px 40px rgba(26,13,10,0.8);
 }
+
+/* ============================================
+   BASE STYLES - Sunset Atmosphere
+   ============================================ */
 
 body.theme-sunset {
-    background-color: var(--bg-primary);
+    background: radial-gradient(ellipse at center, #2d1a14 0%, #1a0d0a 100%);
     color: var(--text-primary);
+    position: relative;
 }
 
-/* Navbar */
+/* Sunset gradient overlay */
+body.theme-sunset::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background:
+        radial-gradient(circle at 80% 20%, rgba(255, 109, 0, 0.08) 0%, transparent 50%),
+        radial-gradient(circle at 20% 60%, rgba(255, 82, 82, 0.06) 0%, transparent 50%),
+        radial-gradient(circle at 50% 40%, rgba(124, 77, 255, 0.04) 0%, transparent 50%);
+    pointer-events: none;
+    z-index: 0;
+    animation: sunsetShift 15s ease-in-out infinite;
+}
+
+@keyframes sunsetShift {
+    0%, 100% {
+        opacity: 0.5;
+        transform: scale(1) rotate(0deg);
+    }
+    50% {
+        opacity: 0.8;
+        transform: scale(1.05) rotate(2deg);
+    }
+}
+
+/* Floating embers / dust particles */
+body.theme-sunset::after {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image:
+        radial-gradient(2px 2px at 30% 40%, rgba(255, 171, 0, 0.8), transparent),
+        radial-gradient(1px 1px at 70% 30%, rgba(255, 109, 0, 0.6), transparent),
+        radial-gradient(2px 2px at 90% 70%, rgba(255, 82, 82, 0.7), transparent),
+        radial-gradient(1px 1px at 50% 80%, rgba(255, 171, 0, 0.5), transparent),
+        radial-gradient(2px 2px at 15% 60%, rgba(124, 77, 255, 0.6), transparent);
+    background-size: 250% 250%;
+    pointer-events: none;
+    z-index: 0;
+    animation: embersFloat 20s linear infinite;
+}
+
+@keyframes embersFloat {
+    0% {
+        background-position: 0% 0%;
+        opacity: 0.6;
+    }
+    50% {
+        opacity: 0.9;
+    }
+    100% {
+        background-position: 100% 100%;
+        opacity: 0.6;
+    }
+}
+
+body.theme-sunset .container-fluid {
+    position: relative;
+    z-index: 1;
+}
+
+/* Custom Scrollbar - Sunset Gradient */
+body.theme-sunset ::-webkit-scrollbar {
+    width: 14px;
+    height: 14px;
+}
+
+body.theme-sunset ::-webkit-scrollbar-track {
+    background: var(--bg-secondary);
+    border-left: 2px solid var(--sunset-orange);
+}
+
+body.theme-sunset ::-webkit-scrollbar-thumb {
+    background: linear-gradient(180deg, var(--sunset-gold) 0%, var(--sunset-orange) 50%, var(--sunset-coral) 100%);
+    border-radius: 10px;
+    border: 2px solid var(--bg-secondary);
+    box-shadow: var(--glow-orange);
+}
+
+body.theme-sunset ::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(180deg, var(--sunset-coral) 0%, var(--sunset-pink) 50%, var(--sunset-purple) 100%);
+    box-shadow: var(--glow-coral);
+}
+
+/* Selection - Warm highlight */
+body.theme-sunset ::selection {
+    background: rgba(255, 109, 0, 0.4);
+    color: white;
+    text-shadow: var(--glow-orange);
+}
+
+/* ============================================
+   NAVBAR - Horizon Line
+   ============================================ */
+
 body.theme-sunset .navbar {
-    background: linear-gradient(135deg, #d84315 0%, #ff6f00 100%) !important;
+    background: linear-gradient(135deg, #241410 0%, #2d1a14 100%) !important;
+    border-bottom: 3px solid transparent;
+    border-image: linear-gradient(90deg, var(--sunset-gold), var(--sunset-orange), var(--sunset-coral)) 1;
+    box-shadow: var(--shadow-lg), 0 0 30px rgba(255, 109, 0, 0.3);
+    backdrop-filter: blur(20px);
+    position: relative;
 }
 
-/* Cards */
-body.theme-sunset .card {
-    background-color: var(--bg-secondary);
-    border-color: var(--border-color);
+body.theme-sunset .navbar::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 109, 0, 0.1), transparent);
+    animation: horizonGlow 5s linear infinite;
+}
+
+@keyframes horizonGlow {
+    0% { transform: translateX(-100%); }
+    100% { transform: translateX(100%); }
+}
+
+body.theme-sunset .navbar-brand {
+    color: var(--text-primary) !important;
+    font-weight: 800;
+    font-size: 1.5rem;
+    text-shadow: var(--glow-orange);
+    transition: all 0.4s ease;
+    position: relative;
+    z-index: 1;
+}
+
+body.theme-sunset .navbar-brand::before {
+    content: '☀';
+    color: var(--sunset-gold);
+    margin-right: 8px;
+    animation: sunPulse 3s ease-in-out infinite;
+}
+
+body.theme-sunset .navbar-brand::after {
+    content: '☾';
+    color: var(--sunset-purple);
+    margin-left: 8px;
+    animation: moonPulse 3s ease-in-out infinite;
+}
+
+@keyframes sunPulse {
+    0%, 100% { transform: scale(1) rotate(0deg); opacity: 1; }
+    50% { transform: scale(1.15) rotate(15deg); opacity: 0.8; }
+}
+
+@keyframes moonPulse {
+    0%, 100% { transform: scale(1) rotate(0deg); opacity: 0.8; }
+    50% { transform: scale(1.1) rotate(-10deg); opacity: 1; }
+}
+
+body.theme-sunset .navbar-brand:hover {
+    color: var(--sunset-orange) !important;
+    text-shadow: var(--glow-orange);
+    transform: scale(1.05);
+}
+
+body.theme-sunset .navbar-brand i {
+    color: var(--sunset-orange);
+    text-shadow: var(--glow-orange);
+    animation: warmGlow 2.5s ease-in-out infinite;
+}
+
+@keyframes warmGlow {
+    0%, 100% { filter: brightness(1); }
+    50% { filter: brightness(1.3); }
+}
+
+/* Nav Links - Twilight Transition */
+body.theme-sunset .nav-link {
+    color: var(--text-secondary) !important;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    position: relative;
+    padding: 0.5rem 1rem;
+}
+
+body.theme-sunset .nav-link::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    width: 0;
+    height: 2px;
+    background: linear-gradient(90deg, var(--sunset-gold), var(--sunset-orange), var(--sunset-coral));
+    transition: all 0.4s ease;
+    transform: translateX(-50%);
+    box-shadow: var(--glow-orange);
+}
+
+body.theme-sunset .nav-link:hover {
+    color: var(--sunset-orange) !important;
+    text-shadow: var(--glow-orange);
+}
+
+body.theme-sunset .nav-link:hover::before {
+    width: 80%;
+}
+
+body.theme-sunset .nav-link.active {
+    color: var(--sunset-orange) !important;
+    text-shadow: var(--glow-orange);
+    background: rgba(255, 109, 0, 0.15);
+    border-radius: 0.5rem;
+    border: 1px solid var(--sunset-orange);
+}
+
+body.theme-sunset .nav-link.active::before {
+    width: 80%;
+}
+
+/* Theme Selector */
+body.theme-sunset #theme-select {
+    background: linear-gradient(135deg, var(--bg-tertiary), var(--bg-quaternary));
+    border: 2px solid var(--sunset-orange);
     color: var(--text-primary);
+    padding: 0.5rem 1rem;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-weight: 600;
+    box-shadow: var(--glow-orange);
+}
+
+body.theme-sunset #theme-select:hover {
+    border-color: var(--sunset-coral);
+    box-shadow: var(--glow-coral);
+    transform: translateY(-2px);
+}
+
+body.theme-sunset #theme-select:focus {
+    border-color: var(--sunset-orange);
+    box-shadow: var(--glow-orange);
+    outline: none;
+}
+
+/* ============================================
+   CARDS - Warm Panels
+   ============================================ */
+
+body.theme-sunset .card {
+    background: linear-gradient(135deg, var(--bg-secondary) 0%, var(--bg-tertiary) 100%);
+    border: 2px solid var(--border-color);
+    color: var(--text-primary);
+    box-shadow: var(--shadow-md), inset 0 0 30px rgba(255, 109, 0, 0.05);
+    transition: all 0.4s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+body.theme-sunset .card::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(255, 109, 0, 0.1) 0%, transparent 70%);
+    animation: fireLuminescence 7s ease-in-out infinite;
+    pointer-events: none;
+}
+
+@keyframes fireLuminescence {
+    0%, 100% {
+        transform: translate(0, 0) scale(1);
+        opacity: 0.3;
+    }
+    50% {
+        transform: translate(8%, 8%) scale(1.08);
+        opacity: 0.6;
+    }
+}
+
+body.theme-sunset .card:hover {
+    box-shadow: var(--shadow-lg), var(--glow-orange), inset 0 0 40px rgba(255, 109, 0, 0.1);
+    transform: translateY(-5px) scale(1.02);
+    border-color: var(--sunset-orange);
 }
 
 body.theme-sunset .card-header {
-    background: linear-gradient(135deg, #5f3d3d 0%, #7c4d4d 100%) !important;
-    border-color: var(--border-color);
+    background: linear-gradient(135deg, var(--bg-tertiary) 0%, var(--bg-quaternary) 100%) !important;
+    border-bottom: 2px solid var(--sunset-orange);
     color: var(--text-primary);
+    font-weight: 700;
+    box-shadow: 0 5px 20px rgba(255, 109, 0, 0.2);
+    position: relative;
+}
+
+body.theme-sunset .card-header::before {
+    content: '◈';
+    color: var(--sunset-gold);
+    margin-right: 10px;
+    animation: emberFlicker 2s ease-in-out infinite;
+}
+
+@keyframes emberFlicker {
+    0%, 100% { opacity: 0.7; filter: brightness(1); }
+    50% { opacity: 1; filter: brightness(1.4); }
+}
+
+body.theme-sunset .card-header h5 {
+    margin: 0;
+    text-shadow: 0 0 10px rgba(255, 109, 0, 0.4);
 }
 
 body.theme-sunset .card-footer {
-    background-color: var(--bg-tertiary) !important;
+    background: linear-gradient(135deg, var(--bg-elevated) 0%, var(--bg-secondary) 100%) !important;
+    border-top: 2px solid rgba(255, 109, 0, 0.3);
+    box-shadow: 0 -5px 20px rgba(255, 109, 0, 0.15);
 }
 
-/* List Groups */
-body.theme-sunset .list-group-item {
-    background-color: var(--bg-secondary);
-    border-color: var(--border-color);
+body.theme-sunset .card-title {
+    color: var(--sunset-orange);
+    font-weight: 700;
+    text-shadow: var(--glow-orange);
+}
+
+body.theme-sunset .card-text {
+    color: var(--text-secondary);
+}
+
+body.theme-sunset .hover-shadow:hover {
+    box-shadow: var(--shadow-xl), var(--glow-orange);
+}
+
+/* ============================================
+   BUTTONS - Fire Elements
+   ============================================ */
+
+/* Primary Button - Orange Glow */
+body.theme-sunset .btn-primary {
+    background: linear-gradient(135deg, var(--sunset-orange) 0%, var(--sunset-coral) 100%);
+    border: 2px solid var(--sunset-orange);
+    color: white;
+    font-weight: 700;
+    box-shadow: var(--glow-orange);
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+body.theme-sunset .btn-primary::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    transition: width 0.6s ease, height 0.6s ease;
+}
+
+body.theme-sunset .btn-primary:hover::before {
+    width: 300px;
+    height: 300px;
+}
+
+body.theme-sunset .btn-primary:hover {
+    background: linear-gradient(135deg, var(--sunset-gold) 0%, var(--sunset-orange) 100%);
+    border-color: var(--sunset-gold);
+    box-shadow: var(--glow-gold);
+    transform: translateY(-3px);
+}
+
+body.theme-sunset .btn-primary:active {
+    transform: translateY(0);
+}
+
+/* Secondary Button */
+body.theme-sunset .btn-secondary {
+    background: linear-gradient(135deg, var(--bg-tertiary) 0%, var(--bg-quaternary) 100%);
+    border: 2px solid var(--sunset-amber);
     color: var(--text-primary);
+    font-weight: 700;
+    box-shadow: 0 0 15px rgba(255, 145, 0, 0.4);
+    transition: all 0.3s ease;
 }
 
-body.theme-sunset .list-group-item:hover {
-    background-color: var(--bg-tertiary);
+body.theme-sunset .btn-secondary:hover {
+    background: var(--bg-quaternary);
+    border-color: var(--sunset-orange);
+    box-shadow: var(--glow-orange);
+    color: var(--sunset-orange);
 }
 
-/* Forms */
+/* Outline Buttons */
+body.theme-sunset .btn-outline-primary {
+    color: var(--sunset-orange);
+    border: 2px solid var(--sunset-orange);
+    background: transparent;
+    font-weight: 700;
+    transition: all 0.3s ease;
+}
+
+body.theme-sunset .btn-outline-primary:hover {
+    background: var(--sunset-orange);
+    color: white;
+    box-shadow: var(--glow-orange);
+    transform: scale(1.05);
+}
+
+body.theme-sunset .btn-outline-secondary {
+    color: var(--sunset-amber);
+    border: 2px solid var(--sunset-amber);
+    background: transparent;
+    font-weight: 700;
+}
+
+body.theme-sunset .btn-outline-secondary:hover {
+    background: var(--sunset-amber);
+    color: white;
+    box-shadow: 0 0 20px rgba(255, 145, 0, 0.6);
+}
+
+body.theme-sunset .btn-outline-danger {
+    color: var(--sunset-coral);
+    border: 2px solid var(--sunset-coral);
+    background: transparent;
+    font-weight: 700;
+}
+
+body.theme-sunset .btn-outline-danger:hover {
+    background: var(--sunset-coral);
+    color: white;
+    box-shadow: var(--glow-coral);
+}
+
+body.theme-sunset .btn-outline-success {
+    color: var(--sunset-gold);
+    border: 2px solid var(--sunset-gold);
+}
+
+body.theme-sunset .btn-outline-success:hover {
+    background: var(--sunset-gold);
+    color: #1a0d0a;
+    box-shadow: var(--glow-gold);
+}
+
+/* Danger Button */
+body.theme-sunset .btn-danger {
+    background: linear-gradient(135deg, var(--sunset-coral) 0%, var(--sunset-pink) 100%);
+    border: 2px solid var(--sunset-coral);
+    font-weight: 700;
+    box-shadow: var(--glow-coral);
+}
+
+body.theme-sunset .btn-danger:hover {
+    background: linear-gradient(135deg, var(--sunset-pink) 0%, #c51162 100%);
+    box-shadow: 0 0 30px rgba(245, 0, 87, 0.6);
+}
+
+/* Success Button */
+body.theme-sunset .btn-success {
+    background: linear-gradient(135deg, var(--sunset-gold) 0%, var(--sunset-amber) 100%);
+    border: 2px solid var(--sunset-gold);
+    color: #1a0d0a;
+    font-weight: 700;
+    box-shadow: var(--glow-gold);
+}
+
+body.theme-sunset .btn-success:hover {
+    background: linear-gradient(135deg, var(--sunset-amber) 0%, var(--sunset-orange) 100%);
+    box-shadow: var(--glow-orange);
+    color: white;
+}
+
+/* ============================================
+   FORMS - Warm Inputs
+   ============================================ */
+
 body.theme-sunset .form-control,
 body.theme-sunset .form-select {
-    background-color: var(--bg-tertiary);
-    border-color: var(--border-color);
+    background: linear-gradient(135deg, var(--bg-tertiary), var(--bg-quaternary));
+    border: 2px solid var(--border-color);
     color: var(--text-primary);
+    transition: all 0.3s ease;
+    font-weight: 500;
 }
 
 body.theme-sunset .form-control:focus,
 body.theme-sunset .form-select:focus {
-    background-color: var(--bg-tertiary);
+    background: var(--bg-quaternary);
+    border-color: var(--sunset-orange);
     color: var(--text-primary);
-    border-color: #ff8a65;
+    box-shadow: var(--glow-orange);
 }
 
-/* Code Blocks */
+body.theme-sunset .form-control::placeholder {
+    color: var(--text-tertiary);
+    font-style: italic;
+}
+
+body.theme-sunset .form-label {
+    color: var(--sunset-orange);
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+}
+
+body.theme-sunset .form-text {
+    color: var(--text-tertiary);
+    font-style: italic;
+}
+
+/* Search Input */
+body.theme-sunset #search-input {
+    background: linear-gradient(135deg, var(--bg-tertiary), var(--bg-quaternary));
+    border: 2px solid var(--sunset-orange);
+    color: var(--text-primary);
+    border-radius: 0.5rem 0 0 0.5rem;
+    box-shadow: var(--glow-orange);
+}
+
+body.theme-sunset #search-input:focus {
+    border-color: var(--sunset-gold);
+    box-shadow: var(--glow-gold);
+}
+
+body.theme-sunset .input-group-text {
+    background: linear-gradient(135deg, var(--bg-tertiary), var(--bg-quaternary));
+    border: 2px solid var(--sunset-orange);
+    border-left: none;
+    color: var(--sunset-orange);
+}
+
+/* ============================================
+   LIST GROUPS - Embers
+   ============================================ */
+
+body.theme-sunset .list-group-item {
+    background: linear-gradient(135deg, var(--bg-secondary), var(--bg-tertiary));
+    border: 1px solid var(--border-color);
+    border-left: 3px solid var(--sunset-orange);
+    color: var(--text-primary);
+    transition: all 0.3s ease;
+}
+
+body.theme-sunset .list-group-item:hover {
+    background: var(--bg-tertiary);
+    border-left-color: var(--sunset-gold);
+    box-shadow: inset 5px 0 20px rgba(255, 109, 0, 0.2);
+    transform: translateX(10px);
+}
+
+body.theme-sunset .list-group-item code {
+    background: var(--bg-quaternary);
+    border: 1px solid var(--sunset-orange);
+    padding: 0.3rem 0.6rem;
+    border-radius: 0.3rem;
+    font-size: 0.9em;
+    box-shadow: inset 0 0 10px rgba(255, 109, 0, 0.2);
+}
+
+/* ============================================
+   CODE BLOCKS - Fire Terminal
+   ============================================ */
+
 body.theme-sunset code {
-    background-color: var(--bg-tertiary);
-    color: #ffab91;
+    background: linear-gradient(135deg, var(--bg-tertiary) 0%, var(--bg-quaternary) 100%);
+    color: var(--sunset-gold);
+    border: 1px solid var(--sunset-orange);
+    padding: 0.3rem 0.6rem;
+    border-radius: 0.3rem;
+    font-family: 'Fira Code', 'Source Code Pro', 'Courier New', monospace;
+    font-size: 0.9em;
+    box-shadow: inset 0 0 10px rgba(255, 109, 0, 0.2), var(--glow-orange);
+    text-shadow: 0 0 5px rgba(255, 171, 0, 0.4);
 }
 
-/* Primary Elements */
-body.theme-sunset .btn-primary {
-    background-color: #ff5722;
-    border-color: #ff5722;
+body.theme-sunset pre code {
+    display: block;
+    padding: 1.5rem;
+    overflow-x: auto;
+    border-left: 4px solid var(--sunset-orange);
 }
 
-body.theme-sunset .btn-primary:hover {
-    background-color: #f4511e;
-    border-color: #f4511e;
-}
+/* ============================================
+   TEXT COLORS
+   ============================================ */
 
 body.theme-sunset .text-primary {
-    color: #ff8a65 !important;
+    color: var(--sunset-orange) !important;
+    text-shadow: var(--glow-orange);
 }
 
-/* Footer */
-body.theme-sunset .footer {
-    background-color: var(--bg-secondary) !important;
-    border-color: var(--border-color);
-}
-
-/* Text Muted */
-body.theme-sunset .text-muted {
+body.theme-sunset .text-secondary {
     color: var(--text-secondary) !important;
 }
 
-/* Buttons */
-body.theme-sunset .btn-outline-secondary {
-    color: var(--text-primary);
-    border-color: var(--border-color);
+body.theme-sunset .text-muted {
+    color: var(--text-muted) !important;
 }
 
-body.theme-sunset .btn-outline-secondary:hover {
-    background-color: var(--bg-tertiary);
+body.theme-sunset .text-success {
+    color: var(--sunset-gold) !important;
 }
 
-body.theme-sunset .btn-outline-danger {
-    color: #ef5350;
-    border-color: #ef5350;
+body.theme-sunset .text-danger {
+    color: var(--sunset-coral) !important;
 }
 
-body.theme-sunset .btn-outline-danger:hover {
-    background-color: #ef5350;
-    color: white;
+body.theme-sunset .text-warning {
+    color: var(--sunset-amber) !important;
 }
 
-/* Alerts */
+/* ============================================
+   ALERTS - Warm Notifications
+   ============================================ */
+
+body.theme-sunset .alert {
+    border: 2px solid;
+    border-radius: 0.5rem;
+    box-shadow: var(--shadow-md);
+    font-weight: 600;
+}
+
+body.theme-sunset .alert-info {
+    background: linear-gradient(135deg, #1a1a2d 0%, #2a2a3d 100%);
+    color: var(--sunset-purple);
+    border-color: var(--sunset-purple);
+    box-shadow: var(--glow-purple);
+}
+
+body.theme-sunset .alert-success {
+    background: linear-gradient(135deg, #2a1d0a 0%, #3a2d1a 100%);
+    color: var(--sunset-gold);
+    border-color: var(--sunset-gold);
+    box-shadow: var(--glow-gold);
+}
+
 body.theme-sunset .alert-warning {
-    background-color: #5f4d1e;
-    color: #ffd089;
-    border-color: #ff8f00;
+    background: linear-gradient(135deg, #2d1a0a 0%, #3d2a1a 100%);
+    color: var(--sunset-amber);
+    border-color: var(--sunset-amber);
+    box-shadow: 0 0 20px rgba(255, 145, 0, 0.3);
 }
 
 body.theme-sunset .alert-danger {
-    background-color: #5f1e1e;
-    color: #ffa3a3;
-    border-color: #e53935;
+    background: linear-gradient(135deg, #2d0a0a 0%, #3d1a1a 100%);
+    color: var(--sunset-coral);
+    border-color: var(--sunset-coral);
+    box-shadow: var(--glow-coral);
+}
+
+body.theme-sunset .alert .btn-close {
+    filter: invert(1) brightness(2);
+}
+
+/* ============================================
+   FOOTER - Evening Horizon
+   ============================================ */
+
+body.theme-sunset .footer {
+    background: linear-gradient(135deg, var(--bg-secondary) 0%, var(--bg-tertiary) 100%) !important;
+    border-top: 3px solid transparent;
+    border-image: linear-gradient(90deg, var(--sunset-gold), var(--sunset-orange), var(--sunset-coral)) 1;
+    color: var(--text-secondary);
+    box-shadow: var(--shadow-lg), 0 -10px 40px rgba(255, 109, 0, 0.2);
+    margin-top: 3rem;
+}
+
+body.theme-sunset .footer a {
+    color: var(--sunset-orange);
+    text-decoration: none;
+    transition: all 0.3s ease;
+    font-weight: 600;
+}
+
+body.theme-sunset .footer a:hover {
+    color: var(--sunset-gold);
+    text-shadow: var(--glow-gold);
+}
+
+/* ============================================
+   LOADING SPINNER - Fire Whirl
+   ============================================ */
+
+body.theme-sunset #loading-spinner {
+    background: rgba(36, 20, 16, 0.98);
+    backdrop-filter: blur(20px);
+    border: 2px solid var(--sunset-orange);
+    box-shadow: var(--shadow-xl), var(--glow-orange);
+}
+
+body.theme-sunset .spinner-border {
+    border: 4px solid rgba(255, 109, 0, 0.2);
+    border-right-color: var(--sunset-orange);
+    border-top-color: var(--sunset-gold);
+    animation: spinnerFire 1.2s ease-in-out infinite;
+}
+
+@keyframes spinnerFire {
+    0% {
+        border-right-color: var(--sunset-orange);
+        border-top-color: var(--sunset-gold);
+    }
+    50% {
+        border-right-color: var(--sunset-coral);
+        border-top-color: var(--sunset-orange);
+    }
+    100% {
+        border-right-color: var(--sunset-orange);
+        border-top-color: var(--sunset-gold);
+    }
+}
+
+/* ============================================
+   EMPTY STATES
+   ============================================ */
+
+body.theme-sunset #empty-state i {
+    opacity: 0.4;
+    color: var(--sunset-orange);
+    text-shadow: var(--glow-orange);
+    animation: warmPulse 3s ease-in-out infinite;
+}
+
+@keyframes warmPulse {
+    0%, 100% { transform: scale(1); opacity: 0.4; }
+    50% { transform: scale(1.08); opacity: 0.6; }
+}
+
+body.theme-sunset #empty-state h3 {
+    color: var(--sunset-orange);
+    text-shadow: var(--glow-orange);
+}
+
+body.theme-sunset #empty-state p {
+    color: var(--text-tertiary);
+}
+
+/* ============================================
+   BADGES
+   ============================================ */
+
+body.theme-sunset .badge {
+    font-weight: 700;
+    padding: 0.4em 0.8em;
+}
+
+body.theme-sunset .badge-primary {
+    background: var(--sunset-orange);
+    color: white;
+    box-shadow: var(--glow-orange);
+}
+
+body.theme-sunset .badge-secondary {
+    background: var(--sunset-amber);
+    color: white;
+    box-shadow: 0 0 15px rgba(255, 145, 0, 0.4);
+}
+
+/* ============================================
+   TRANSITIONS & ANIMATIONS
+   ============================================ */
+
+body.theme-sunset .view-container {
+    animation: twilightFade 0.8s ease;
+}
+
+@keyframes twilightFade {
+    0% {
+        opacity: 0;
+        transform: translateY(30px);
+        filter: brightness(0.5);
+    }
+    60% {
+        opacity: 0.8;
+        transform: translateY(-5px);
+        filter: brightness(1.1);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+        filter: brightness(1);
+    }
+}
+
+/* ============================================
+   CATEGORY CARDS
+   ============================================ */
+
+body.theme-sunset .category-card {
+    background: linear-gradient(135deg, var(--bg-secondary) 0%, var(--bg-tertiary) 100%);
+    border: 2px solid var(--sunset-amber);
+    transition: all 0.4s ease;
+}
+
+body.theme-sunset .category-card:hover {
+    border-color: var(--sunset-orange);
+    box-shadow: var(--shadow-lg), var(--glow-orange);
+    transform: scale(1.02);
+}
+
+body.theme-sunset .item-card {
+    background: var(--bg-elevated);
+    border: 1px solid var(--border-color);
+    border-left: 3px solid var(--sunset-orange);
+    transition: all 0.3s ease;
+}
+
+body.theme-sunset .item-card:hover {
+    border-left-color: var(--sunset-gold);
+    box-shadow: inset 5px 0 15px rgba(255, 109, 0, 0.2);
+}
+
+/* ============================================
+   RESPONSIVE ADJUSTMENTS
+   ============================================ */
+
+@media (max-width: 768px) {
+    body.theme-sunset .navbar-brand {
+        font-size: 1.3rem;
+    }
+
+    body.theme-sunset .card {
+        margin-bottom: 1rem;
+    }
+
+    body.theme-sunset::before,
+    body.theme-sunset::after {
+        opacity: 0.5;
+    }
+}
+
+/* ============================================
+   PRINT STYLES
+   ============================================ */
+
+@media print {
+    body.theme-sunset {
+        background: white;
+        color: black;
+    }
+
+    body.theme-sunset::before,
+    body.theme-sunset::after {
+        display: none;
+    }
+
+    body.theme-sunset .navbar,
+    body.theme-sunset .footer,
+    body.theme-sunset .btn {
+        display: none !important;
+    }
 }

@@ -1,135 +1,895 @@
 /**
  * forest.css
- * Forest Theme for CheatSheeter
- * Earthy greens inspired by nature
+ * Forest Theme for CheatSheeter - COMPREHENSIVE EDITION
+ * Natural, organic aesthetics inspired by ancient forests and woodland magic
+ * Deep greens with bioluminescent fungi accents
  */
 
 :root {
-    /* Background Colors */
-    --bg-primary: #1b2d1b;
-    --bg-secondary: #2d4a2d;
-    --bg-tertiary: #3d5f3d;
+    /* Background Colors - Forest Floor */
+    --bg-primary: #0d1b0d;
+    --bg-secondary: #162816;
+    --bg-tertiary: #1f3a1f;
+    --bg-quaternary: #284d28;
+    --bg-elevated: #14241a;
 
     /* Text Colors */
     --text-primary: #e8f5e9;
     --text-secondary: #a5d6a7;
+    --text-tertiary: #66bb6a;
+    --text-muted: #388e3c;
+
+    /* Forest Accent Colors */
+    --forest-emerald: #00c853;
+    --forest-jade: #1de9b6;
+    --forest-moss: #43a047;
+    --forest-lime: #76ff03;
+    --forest-sage: #558b2f;
+
+    /* Magical Glows */
+    --glow-emerald: 0 0 10px rgba(0, 200, 83, 0.6), 0 0 20px rgba(0, 200, 83, 0.4);
+    --glow-jade: 0 0 10px rgba(29, 233, 182, 0.6), 0 0 20px rgba(29, 233, 182, 0.4);
+    --glow-lime: 0 0 10px rgba(118, 255, 3, 0.6), 0 0 20px rgba(118, 255, 3, 0.4);
 
     /* Border Colors */
-    --border-color: #3d5f3d;
+    --border-color: #2d4a2d;
+    --border-glow: rgba(0, 200, 83, 0.5);
 
     /* Shadows */
-    --shadow-sm: 0 .125rem .25rem rgba(0,0,0,.4);
-    --shadow-md: 0 .5rem 1rem rgba(0,0,0,.6);
+    --shadow-sm: 0 2px 4px rgba(13,27,13,0.5);
+    --shadow-md: 0 4px 8px rgba(13,27,13,0.6);
+    --shadow-lg: 0 10px 20px rgba(13,27,13,0.7);
+    --shadow-xl: 0 20px 40px rgba(13,27,13,0.8);
 }
+
+/* ============================================
+   BASE STYLES - Forest Atmosphere
+   ============================================ */
 
 body.theme-forest {
-    background-color: var(--bg-primary);
+    background: radial-gradient(ellipse at center, #0d1b0d 0%, #050a05 100%);
     color: var(--text-primary);
+    position: relative;
 }
 
-/* Navbar */
+/* Dappled sunlight through trees */
+body.theme-forest::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image:
+        radial-gradient(circle at 15% 40%, rgba(0,200,83,0.04) 0%, transparent 50%),
+        radial-gradient(circle at 85% 60%, rgba(29,233,182,0.03) 0%, transparent 50%),
+        radial-gradient(circle at 50% 10%, rgba(118,255,3,0.02) 0%, transparent 50%);
+    pointer-events: none;
+    z-index: 0;
+    animation: forestBreeze 12s ease-in-out infinite;
+}
+
+@keyframes forestBreeze {
+    0%, 100% {
+        opacity: 0.4;
+        transform: translateX(0);
+    }
+    50% {
+        opacity: 0.7;
+        transform: translateX(2%);
+    }
+}
+
+/* Fireflies / Glowworms */
+body.theme-forest::after {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image:
+        radial-gradient(2px 2px at 25% 35%, rgba(118,255,3,0.9), transparent),
+        radial-gradient(1px 1px at 65% 25%, rgba(0,200,83,0.7), transparent),
+        radial-gradient(2px 2px at 85% 55%, rgba(29,233,182,0.8), transparent),
+        radial-gradient(1px 1px at 45% 75%, rgba(118,255,3,0.6), transparent),
+        radial-gradient(2px 2px at 10% 65%, rgba(0,200,83,0.8), transparent);
+    background-size: 300% 300%;
+    pointer-events: none;
+    z-index: 0;
+    animation: fireflyDance 15s ease-in-out infinite;
+}
+
+@keyframes fireflyDance {
+    0%, 100% {
+        background-position: 0% 0%;
+        opacity: 0.6;
+    }
+    50% {
+        background-position: 100% 100%;
+        opacity: 0.9;
+    }
+}
+
+body.theme-forest .container-fluid {
+    position: relative;
+    z-index: 1;
+}
+
+/* Custom Scrollbar - Vine Style */
+body.theme-forest ::-webkit-scrollbar {
+    width: 14px;
+    height: 14px;
+}
+
+body.theme-forest ::-webkit-scrollbar-track {
+    background: var(--bg-secondary);
+    border-left: 2px solid var(--forest-emerald);
+}
+
+body.theme-forest ::-webkit-scrollbar-thumb {
+    background: linear-gradient(180deg, var(--forest-emerald) 0%, var(--forest-jade) 50%, var(--forest-moss) 100%);
+    border-radius: 10px;
+    border: 2px solid var(--bg-secondary);
+    box-shadow: var(--glow-emerald);
+}
+
+body.theme-forest ::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(180deg, var(--forest-lime) 0%, var(--forest-emerald) 50%, var(--forest-jade) 100%);
+    box-shadow: var(--glow-lime);
+}
+
+/* Selection - Moss highlight */
+body.theme-forest ::selection {
+    background: rgba(0, 200, 83, 0.4);
+    color: white;
+    text-shadow: var(--glow-emerald);
+}
+
+/* ============================================
+   NAVBAR - Forest Canopy
+   ============================================ */
+
 body.theme-forest .navbar {
-    background: linear-gradient(135deg, #2e7d32 0%, #388e3c 100%) !important;
+    background: linear-gradient(135deg, #14241a 0%, #1f3a1f 100%) !important;
+    border-bottom: 3px solid var(--forest-emerald);
+    box-shadow: var(--shadow-lg), 0 0 30px rgba(0, 200, 83, 0.3);
+    backdrop-filter: blur(20px);
+    position: relative;
 }
 
-/* Cards */
-body.theme-forest .card {
-    background-color: var(--bg-secondary);
-    border-color: var(--border-color);
+body.theme-forest .navbar::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(0,200,83,0.05), transparent);
+    animation: leafShadow 4s linear infinite;
+}
+
+@keyframes leafShadow {
+    0% { transform: translateX(-100%); }
+    100% { transform: translateX(100%); }
+}
+
+body.theme-forest .navbar-brand {
+    color: var(--text-primary) !important;
+    font-weight: 800;
+    font-size: 1.5rem;
+    text-shadow: var(--glow-emerald);
+    transition: all 0.4s ease;
+    position: relative;
+    z-index: 1;
+}
+
+body.theme-forest .navbar-brand::before {
+    content: '🌿';
+    margin-right: 8px;
+    animation: leafRustle 3s ease-in-out infinite;
+}
+
+body.theme-forest .navbar-brand::after {
+    content: '🌿';
+    margin-left: 8px;
+    animation: leafRustle 3s ease-in-out infinite reverse;
+}
+
+@keyframes leafRustle {
+    0%, 100% { transform: rotate(-5deg); }
+    50% { transform: rotate(5deg); }
+}
+
+body.theme-forest .navbar-brand:hover {
+    color: var(--forest-emerald) !important;
+    text-shadow: var(--glow-emerald);
+    transform: scale(1.05);
+}
+
+body.theme-forest .navbar-brand i {
+    color: var(--forest-emerald);
+    text-shadow: var(--glow-emerald);
+    animation: growthPulse 2.5s ease-in-out infinite;
+}
+
+@keyframes growthPulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+}
+
+/* Nav Links - Branch Structure */
+body.theme-forest .nav-link {
+    color: var(--text-secondary) !important;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    position: relative;
+    padding: 0.5rem 1rem;
+}
+
+body.theme-forest .nav-link::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    width: 0;
+    height: 2px;
+    background: linear-gradient(90deg, var(--forest-emerald), var(--forest-jade));
+    transition: all 0.4s ease;
+    transform: translateX(-50%);
+    box-shadow: var(--glow-emerald);
+}
+
+body.theme-forest .nav-link:hover {
+    color: var(--forest-emerald) !important;
+    text-shadow: var(--glow-emerald);
+}
+
+body.theme-forest .nav-link:hover::before {
+    width: 80%;
+}
+
+body.theme-forest .nav-link.active {
+    color: var(--forest-emerald) !important;
+    text-shadow: var(--glow-emerald);
+    background: rgba(0, 200, 83, 0.15);
+    border-radius: 0.5rem;
+    border: 1px solid var(--forest-emerald);
+}
+
+body.theme-forest .nav-link.active::before {
+    width: 80%;
+}
+
+/* Theme Selector */
+body.theme-forest #theme-select {
+    background: linear-gradient(135deg, var(--bg-tertiary), var(--bg-quaternary));
+    border: 2px solid var(--forest-emerald);
     color: var(--text-primary);
+    padding: 0.5rem 1rem;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-weight: 600;
+    box-shadow: var(--glow-emerald);
+}
+
+body.theme-forest #theme-select:hover {
+    border-color: var(--forest-jade);
+    box-shadow: var(--glow-jade);
+    transform: translateY(-2px);
+}
+
+body.theme-forest #theme-select:focus {
+    border-color: var(--forest-emerald);
+    box-shadow: var(--glow-emerald);
+    outline: none;
+}
+
+/* ============================================
+   CARDS - Woodland Panels
+   ============================================ */
+
+body.theme-forest .card {
+    background: linear-gradient(135deg, var(--bg-secondary) 0%, var(--bg-tertiary) 100%);
+    border: 2px solid var(--border-color);
+    color: var(--text-primary);
+    box-shadow: var(--shadow-md), inset 0 0 30px rgba(0, 200, 83, 0.05);
+    transition: all 0.4s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+body.theme-forest .card::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(0,200,83,0.1) 0%, transparent 70%);
+    animation: mushroomGlow 6s ease-in-out infinite;
+    pointer-events: none;
+}
+
+@keyframes mushroomGlow {
+    0%, 100% {
+        transform: translate(0, 0) scale(1);
+        opacity: 0.3;
+    }
+    50% {
+        transform: translate(5%, 5%) scale(1.05);
+        opacity: 0.6;
+    }
+}
+
+body.theme-forest .card:hover {
+    box-shadow: var(--shadow-lg), var(--glow-emerald), inset 0 0 40px rgba(0, 200, 83, 0.1);
+    transform: translateY(-5px) scale(1.02);
+    border-color: var(--forest-emerald);
 }
 
 body.theme-forest .card-header {
-    background: linear-gradient(135deg, #3d5f3d 0%, #4a7c4a 100%) !important;
-    border-color: var(--border-color);
+    background: linear-gradient(135deg, var(--bg-tertiary) 0%, var(--bg-quaternary) 100%) !important;
+    border-bottom: 2px solid var(--forest-emerald);
     color: var(--text-primary);
+    font-weight: 700;
+    box-shadow: 0 5px 20px rgba(0, 200, 83, 0.2);
+    position: relative;
+}
+
+body.theme-forest .card-header::before {
+    content: '❈';
+    color: var(--forest-emerald);
+    margin-right: 10px;
+    animation: petalRotate 4s linear infinite;
+}
+
+@keyframes petalRotate {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+body.theme-forest .card-header h5 {
+    margin: 0;
+    text-shadow: 0 0 10px rgba(0, 200, 83, 0.4);
 }
 
 body.theme-forest .card-footer {
-    background-color: var(--bg-tertiary) !important;
+    background: linear-gradient(135deg, var(--bg-elevated) 0%, var(--bg-secondary) 100%) !important;
+    border-top: 2px solid rgba(0, 200, 83, 0.3);
+    box-shadow: 0 -5px 20px rgba(0, 200, 83, 0.15);
 }
 
-/* List Groups */
-body.theme-forest .list-group-item {
-    background-color: var(--bg-secondary);
-    border-color: var(--border-color);
+body.theme-forest .card-title {
+    color: var(--forest-emerald);
+    font-weight: 700;
+    text-shadow: var(--glow-emerald);
+}
+
+body.theme-forest .card-text {
+    color: var(--text-secondary);
+}
+
+body.theme-forest .hover-shadow:hover {
+    box-shadow: var(--shadow-xl), var(--glow-emerald);
+}
+
+/* ============================================
+   BUTTONS - Organic Elements
+   ============================================ */
+
+/* Primary Button - Emerald Glow */
+body.theme-forest .btn-primary {
+    background: linear-gradient(135deg, var(--forest-emerald) 0%, var(--forest-moss) 100%);
+    border: 2px solid var(--forest-emerald);
+    color: white;
+    font-weight: 700;
+    box-shadow: var(--glow-emerald);
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+body.theme-forest .btn-primary::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    transition: width 0.6s ease, height 0.6s ease;
+}
+
+body.theme-forest .btn-primary:hover::before {
+    width: 300px;
+    height: 300px;
+}
+
+body.theme-forest .btn-primary:hover {
+    background: linear-gradient(135deg, var(--forest-jade) 0%, var(--forest-emerald) 100%);
+    border-color: var(--forest-jade);
+    box-shadow: var(--glow-jade);
+    transform: translateY(-3px);
+}
+
+body.theme-forest .btn-primary:active {
+    transform: translateY(0);
+}
+
+/* Secondary Button */
+body.theme-forest .btn-secondary {
+    background: linear-gradient(135deg, var(--bg-tertiary) 0%, var(--bg-quaternary) 100%);
+    border: 2px solid var(--forest-moss);
     color: var(--text-primary);
+    font-weight: 700;
+    box-shadow: 0 0 15px rgba(67, 160, 71, 0.4);
+    transition: all 0.3s ease;
 }
 
-body.theme-forest .list-group-item:hover {
-    background-color: var(--bg-tertiary);
+body.theme-forest .btn-secondary:hover {
+    background: var(--bg-quaternary);
+    border-color: var(--forest-emerald);
+    box-shadow: var(--glow-emerald);
+    color: var(--forest-emerald);
 }
 
-/* Forms */
+/* Outline Buttons */
+body.theme-forest .btn-outline-primary {
+    color: var(--forest-emerald);
+    border: 2px solid var(--forest-emerald);
+    background: transparent;
+    font-weight: 700;
+    transition: all 0.3s ease;
+}
+
+body.theme-forest .btn-outline-primary:hover {
+    background: var(--forest-emerald);
+    color: white;
+    box-shadow: var(--glow-emerald);
+    transform: scale(1.05);
+}
+
+body.theme-forest .btn-outline-secondary {
+    color: var(--forest-moss);
+    border: 2px solid var(--forest-moss);
+    background: transparent;
+    font-weight: 700;
+}
+
+body.theme-forest .btn-outline-secondary:hover {
+    background: var(--forest-moss);
+    color: white;
+    box-shadow: 0 0 20px rgba(67, 160, 71, 0.6);
+}
+
+body.theme-forest .btn-outline-danger {
+    color: #ff6b6b;
+    border: 2px solid #ff6b6b;
+    background: transparent;
+    font-weight: 700;
+}
+
+body.theme-forest .btn-outline-danger:hover {
+    background: #ff6b6b;
+    color: white;
+    box-shadow: 0 0 20px rgba(255, 107, 107, 0.6);
+}
+
+body.theme-forest .btn-outline-success {
+    color: var(--forest-lime);
+    border: 2px solid var(--forest-lime);
+}
+
+body.theme-forest .btn-outline-success:hover {
+    background: var(--forest-lime);
+    color: #0d1b0d;
+    box-shadow: var(--glow-lime);
+}
+
+/* Danger Button */
+body.theme-forest .btn-danger {
+    background: linear-gradient(135deg, #e57373 0%, #c62828 100%);
+    border: 2px solid #e57373;
+    font-weight: 700;
+    box-shadow: 0 0 20px rgba(229, 115, 115, 0.4);
+}
+
+body.theme-forest .btn-danger:hover {
+    background: linear-gradient(135deg, #c62828 0%, #b71c1c 100%);
+    box-shadow: 0 0 30px rgba(229, 115, 115, 0.6);
+}
+
+/* Success Button */
+body.theme-forest .btn-success {
+    background: linear-gradient(135deg, var(--forest-lime) 0%, var(--forest-emerald) 100%);
+    border: 2px solid var(--forest-lime);
+    color: #0d1b0d;
+    font-weight: 700;
+    box-shadow: var(--glow-lime);
+}
+
+body.theme-forest .btn-success:hover {
+    background: linear-gradient(135deg, var(--forest-emerald) 0%, var(--forest-moss) 100%);
+    box-shadow: var(--glow-emerald);
+    color: white;
+}
+
+/* ============================================
+   FORMS - Natural Inputs
+   ============================================ */
+
 body.theme-forest .form-control,
 body.theme-forest .form-select {
-    background-color: var(--bg-tertiary);
-    border-color: var(--border-color);
+    background: linear-gradient(135deg, var(--bg-tertiary), var(--bg-quaternary));
+    border: 2px solid var(--border-color);
     color: var(--text-primary);
+    transition: all 0.3s ease;
+    font-weight: 500;
 }
 
 body.theme-forest .form-control:focus,
 body.theme-forest .form-select:focus {
-    background-color: var(--bg-tertiary);
+    background: var(--bg-quaternary);
+    border-color: var(--forest-emerald);
     color: var(--text-primary);
-    border-color: #66bb6a;
+    box-shadow: var(--glow-emerald);
 }
 
-/* Code Blocks */
+body.theme-forest .form-control::placeholder {
+    color: var(--text-tertiary);
+    font-style: italic;
+}
+
+body.theme-forest .form-label {
+    color: var(--forest-emerald);
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+}
+
+body.theme-forest .form-text {
+    color: var(--text-tertiary);
+    font-style: italic;
+}
+
+/* Search Input */
+body.theme-forest #search-input {
+    background: linear-gradient(135deg, var(--bg-tertiary), var(--bg-quaternary));
+    border: 2px solid var(--forest-emerald);
+    color: var(--text-primary);
+    border-radius: 0.5rem 0 0 0.5rem;
+    box-shadow: var(--glow-emerald);
+}
+
+body.theme-forest #search-input:focus {
+    border-color: var(--forest-jade);
+    box-shadow: var(--glow-jade);
+}
+
+body.theme-forest .input-group-text {
+    background: linear-gradient(135deg, var(--bg-tertiary), var(--bg-quaternary));
+    border: 2px solid var(--forest-emerald);
+    border-left: none;
+    color: var(--forest-emerald);
+}
+
+/* ============================================
+   LIST GROUPS - Forest Floor
+   ============================================ */
+
+body.theme-forest .list-group-item {
+    background: linear-gradient(135deg, var(--bg-secondary), var(--bg-tertiary));
+    border: 1px solid var(--border-color);
+    border-left: 3px solid var(--forest-emerald);
+    color: var(--text-primary);
+    transition: all 0.3s ease;
+}
+
+body.theme-forest .list-group-item:hover {
+    background: var(--bg-tertiary);
+    border-left-color: var(--forest-jade);
+    box-shadow: inset 5px 0 20px rgba(0, 200, 83, 0.2);
+    transform: translateX(10px);
+}
+
+body.theme-forest .list-group-item code {
+    background: var(--bg-quaternary);
+    border: 1px solid var(--forest-emerald);
+    padding: 0.3rem 0.6rem;
+    border-radius: 0.3rem;
+    font-size: 0.9em;
+    box-shadow: inset 0 0 10px rgba(0, 200, 83, 0.2);
+}
+
+/* ============================================
+   CODE BLOCKS - Terminal Moss
+   ============================================ */
+
 body.theme-forest code {
-    background-color: var(--bg-tertiary);
-    color: #81c784;
+    background: linear-gradient(135deg, var(--bg-tertiary) 0%, var(--bg-quaternary) 100%);
+    color: var(--forest-lime);
+    border: 1px solid var(--forest-emerald);
+    padding: 0.3rem 0.6rem;
+    border-radius: 0.3rem;
+    font-family: 'Fira Code', 'Source Code Pro', 'Courier New', monospace;
+    font-size: 0.9em;
+    box-shadow: inset 0 0 10px rgba(0, 200, 83, 0.2), var(--glow-emerald);
+    text-shadow: 0 0 5px rgba(118, 255, 3, 0.4);
 }
 
-/* Primary Elements */
-body.theme-forest .btn-primary {
-    background-color: #43a047;
-    border-color: #43a047;
+body.theme-forest pre code {
+    display: block;
+    padding: 1.5rem;
+    overflow-x: auto;
+    border-left: 4px solid var(--forest-emerald);
 }
 
-body.theme-forest .btn-primary:hover {
-    background-color: #388e3c;
-    border-color: #388e3c;
-}
+/* ============================================
+   TEXT COLORS
+   ============================================ */
 
 body.theme-forest .text-primary {
-    color: #81c784 !important;
+    color: var(--forest-emerald) !important;
+    text-shadow: var(--glow-emerald);
 }
 
-/* Footer */
-body.theme-forest .footer {
-    background-color: var(--bg-secondary) !important;
-    border-color: var(--border-color);
-}
-
-/* Text Muted */
-body.theme-forest .text-muted {
+body.theme-forest .text-secondary {
     color: var(--text-secondary) !important;
 }
 
-/* Buttons */
-body.theme-forest .btn-outline-secondary {
-    color: var(--text-primary);
-    border-color: var(--border-color);
+body.theme-forest .text-muted {
+    color: var(--text-muted) !important;
 }
 
-body.theme-forest .btn-outline-secondary:hover {
-    background-color: var(--bg-tertiary);
+body.theme-forest .text-success {
+    color: var(--forest-lime) !important;
 }
 
-body.theme-forest .btn-outline-danger {
+body.theme-forest .text-danger {
+    color: #e57373 !important;
+}
+
+body.theme-forest .text-warning {
+    color: #ffd54f !important;
+}
+
+/* ============================================
+   ALERTS - Nature Notifications
+   ============================================ */
+
+body.theme-forest .alert {
+    border: 2px solid;
+    border-radius: 0.5rem;
+    box-shadow: var(--shadow-md);
+    font-weight: 600;
+}
+
+body.theme-forest .alert-info {
+    background: linear-gradient(135deg, #0d1a1d 0%, #1a2a2d 100%);
+    color: var(--forest-jade);
+    border-color: var(--forest-jade);
+    box-shadow: var(--glow-jade);
+}
+
+body.theme-forest .alert-success {
+    background: linear-gradient(135deg, #0d1d0d 0%, #1a2d1a 100%);
+    color: var(--forest-lime);
+    border-color: var(--forest-lime);
+    box-shadow: var(--glow-lime);
+}
+
+body.theme-forest .alert-warning {
+    background: linear-gradient(135deg, #2a2d0a 0%, #3a3d1a 100%);
+    color: #ffd54f;
+    border-color: #ffd54f;
+    box-shadow: 0 0 20px rgba(255, 213, 79, 0.3);
+}
+
+body.theme-forest .alert-danger {
+    background: linear-gradient(135deg, #2d0d0d 0%, #3d1a1a 100%);
     color: #e57373;
     border-color: #e57373;
+    box-shadow: 0 0 20px rgba(229, 115, 115, 0.3);
 }
 
-body.theme-forest .btn-outline-danger:hover {
-    background-color: #e57373;
+body.theme-forest .alert .btn-close {
+    filter: invert(1) brightness(2);
+}
+
+/* ============================================
+   FOOTER - Root System
+   ============================================ */
+
+body.theme-forest .footer {
+    background: linear-gradient(135deg, var(--bg-secondary) 0%, var(--bg-tertiary) 100%) !important;
+    border-top: 3px solid var(--forest-emerald);
+    color: var(--text-secondary);
+    box-shadow: var(--shadow-lg), 0 -10px 40px rgba(0, 200, 83, 0.2);
+    margin-top: 3rem;
+}
+
+body.theme-forest .footer a {
+    color: var(--forest-emerald);
+    text-decoration: none;
+    transition: all 0.3s ease;
+    font-weight: 600;
+}
+
+body.theme-forest .footer a:hover {
+    color: var(--forest-jade);
+    text-shadow: var(--glow-jade);
+}
+
+/* ============================================
+   LOADING SPINNER - Seed Growth
+   ============================================ */
+
+body.theme-forest #loading-spinner {
+    background: rgba(20, 40, 20, 0.98);
+    backdrop-filter: blur(20px);
+    border: 2px solid var(--forest-emerald);
+    box-shadow: var(--shadow-xl), var(--glow-emerald);
+}
+
+body.theme-forest .spinner-border {
+    border: 4px solid rgba(0, 200, 83, 0.2);
+    border-right-color: var(--forest-emerald);
+    border-top-color: var(--forest-jade);
+    animation: spinnerGrow 1.5s ease-in-out infinite;
+}
+
+@keyframes spinnerGrow {
+    0% {
+        border-right-color: var(--forest-emerald);
+        border-top-color: var(--forest-jade);
+    }
+    50% {
+        border-right-color: var(--forest-jade);
+        border-top-color: var(--forest-lime);
+    }
+    100% {
+        border-right-color: var(--forest-emerald);
+        border-top-color: var(--forest-jade);
+    }
+}
+
+/* ============================================
+   EMPTY STATES
+   ============================================ */
+
+body.theme-forest #empty-state i {
+    opacity: 0.4;
+    color: var(--forest-emerald);
+    text-shadow: var(--glow-emerald);
+    animation: sway 4s ease-in-out infinite;
+}
+
+@keyframes sway {
+    0%, 100% { transform: rotate(-3deg); }
+    50% { transform: rotate(3deg); }
+}
+
+body.theme-forest #empty-state h3 {
+    color: var(--forest-emerald);
+    text-shadow: var(--glow-emerald);
+}
+
+body.theme-forest #empty-state p {
+    color: var(--text-tertiary);
+}
+
+/* ============================================
+   BADGES
+   ============================================ */
+
+body.theme-forest .badge {
+    font-weight: 700;
+    padding: 0.4em 0.8em;
+}
+
+body.theme-forest .badge-primary {
+    background: var(--forest-emerald);
     color: white;
+    box-shadow: var(--glow-emerald);
 }
 
-/* Alerts */
-body.theme-forest .alert-success {
-    background-color: #2d5f2d;
-    color: #a5d6a7;
-    border-color: #43a047;
+body.theme-forest .badge-secondary {
+    background: var(--forest-moss);
+    color: white;
+    box-shadow: 0 0 15px rgba(67, 160, 71, 0.4);
+}
+
+/* ============================================
+   TRANSITIONS & ANIMATIONS
+   ============================================ */
+
+body.theme-forest .view-container {
+    animation: sprout 0.7s ease;
+}
+
+@keyframes sprout {
+    0% {
+        opacity: 0;
+        transform: translateY(20px) scale(0.9);
+    }
+    60% {
+        opacity: 0.8;
+        transform: translateY(-3px) scale(1.02);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+/* ============================================
+   CATEGORY CARDS
+   ============================================ */
+
+body.theme-forest .category-card {
+    background: linear-gradient(135deg, var(--bg-secondary) 0%, var(--bg-tertiary) 100%);
+    border: 2px solid var(--forest-moss);
+    transition: all 0.4s ease;
+}
+
+body.theme-forest .category-card:hover {
+    border-color: var(--forest-emerald);
+    box-shadow: var(--shadow-lg), var(--glow-emerald);
+    transform: scale(1.02);
+}
+
+body.theme-forest .item-card {
+    background: var(--bg-elevated);
+    border: 1px solid var(--border-color);
+    border-left: 3px solid var(--forest-emerald);
+    transition: all 0.3s ease;
+}
+
+body.theme-forest .item-card:hover {
+    border-left-color: var(--forest-jade);
+    box-shadow: inset 5px 0 15px rgba(0, 200, 83, 0.2);
+}
+
+/* ============================================
+   RESPONSIVE ADJUSTMENTS
+   ============================================ */
+
+@media (max-width: 768px) {
+    body.theme-forest .navbar-brand {
+        font-size: 1.3rem;
+    }
+
+    body.theme-forest .card {
+        margin-bottom: 1rem;
+    }
+
+    body.theme-forest::before,
+    body.theme-forest::after {
+        opacity: 0.5;
+    }
+}
+
+/* ============================================
+   PRINT STYLES
+   ============================================ */
+
+@media print {
+    body.theme-forest {
+        background: white;
+        color: black;
+    }
+
+    body.theme-forest::before,
+    body.theme-forest::after {
+        display: none;
+    }
+
+    body.theme-forest .navbar,
+    body.theme-forest .footer,
+    body.theme-forest .btn {
+        display: none !important;
+    }
 }
