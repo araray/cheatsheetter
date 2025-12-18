@@ -1,211 +1,576 @@
-title: Vim Cheat Sheet
-columns: 2 # Number of columns to display
+title: Vim for Python & C/C++ Development
+columns: 3
 categories:
-  - name: Basic Movement
+  - name: Essential Navigation
     column: 1
     items:
-      - command: h
-        description: Move cursor left
-      - command: j
-        description: Move cursor down
-      - command: k
-        description: Move cursor up
-      - command: l
-        description: Move cursor right
-      - command: w
-        description: Move to next word
-      - command: b
-        description: Move to previous word
-      - command: "0"
-        description: Move to beginning of the line
-      - command: "$"
-        description: Move to end of the line
-      - command: gg
-        description: Go to the first line of the file
-      - command: G
-        description: Go to the last line of the file
-      - command: ":number"
-        description: Go to line [number]
-  - name: Insert Mode
+      - command: "h/j/k/l"
+        description: "Move left/down/up/right"
+      - command: "w / b / e"
+        description: "Next word / previous word / end of word"
+      - command: "W / B / E"
+        description: "WORD motions (ignore punctuation)"
+      - command: "0 / ^ / $"
+        description: "Start of line / first non-blank / end of line"
+      - command: "gg / G"
+        description: "First line / last line of file"
+      - command: "{ / }"
+        description: "Previous/next paragraph (blank line separated)"
+      - command: "[{ / ]}"
+        description: "Jump to start/end of code block"
+      - command: "% "
+        description: "Jump to matching bracket/paren/brace"
+      - command: "gd"
+        description: "Go to local definition"
+      - command: "gD"
+        description: "Go to global definition"
+      - command: "Ctrl+o / Ctrl+i"
+        description: "Jump backward/forward in jump list"
+      - command: "Ctrl+] / Ctrl+t"
+        description: "Jump to tag / return from tag"
+      - command: "' ' (backtick twice)"
+        description: "Jump to last position"
+      - command: "f<char> / F<char>"
+        description: "Find character forward/backward on line"
+      - command: "t<char> / T<char>"
+        description: "Till character forward/backward"
+      - command: "; / ,"
+        description: "Repeat last f/t/F/T forward/backward"
+      - command: "* / #"
+        description: "Search word under cursor forward/backward"
+      - command: "/ / ?"
+        description: "Search forward/backward"
+      - command: "n / N"
+        description: "Next/previous search result"
+
+  - name: Text Objects (Operators)
     column: 1
     items:
-      - command: i
-        description: Insert before the cursor
-      - command: I
-        description: Insert at the beginning of the line
-      - command: a
-        description: Append after the cursor
-      - command: A
-        description: Append at the end of the line
-      - command: o
-        description: Open a new line below
-      - command: O
-        description: Open a new line above
-      - command: ESC
-        description: Exit insert mode
-  - name: Editing Text
+      - command: "iw / aw"
+        description: "Inner word / around word"
+      - command: "is / as"
+        description: "Inner sentence / around sentence"
+      - command: "ip / ap"
+        description: "Inner paragraph / around paragraph"
+      - command: "i{ / a{ or iB / aB"
+        description: "Inner/around curly braces block"
+      - command: "i[ / a["
+        description: "Inner/around square brackets"
+      - command: "i( / a( or ib / ab"
+        description: "Inner/around parentheses"
+      - command: "i< / a<"
+        description: "Inner/around angle brackets"
+      - command: 'i" / a"'
+        description: "Inner/around double quotes"
+      - command: "i' / a'"
+        description: "Inner/around single quotes"
+      - command: "it / at"
+        description: "Inner/around XML/HTML tag"
+      - command: "ci{"
+        description: "Change inside braces"
+      - command: "da("
+        description: "Delete around parentheses (including parens)"
+      - command: "yi["
+        description: "Yank inside square brackets"
+      - command: "vip"
+        description: "Visually select inner paragraph"
+
+  - name: Advanced Editing
     column: 1
     items:
-      - command: x
-        description: Delete character under the cursor
-      - command: X
-        description: Delete character before the cursor
-      - command: dd
-        description: Delete (cut) the current line
-      - command: yy
-        description: Yank (copy) the current line
-      - command: p
-        description: Paste after the cursor
-      - command: P
-        description: Paste before the cursor
-      - command: u
-        description: Undo the last action
-      - command: "Ctrl+r"
-        description: Redo the last undone change
-      - command: dw
-        description: Delete word from cursor
-      - command: cw
-        description: Change (replace) word from cursor
-      - command: "~"
-        description: Switch case of character under cursor
-      - command: J
-        description: Join the next line to the current one
-  - name: Visual Mode
-    column: 1
-    items:
-      - command: v
-        description: Start visual mode character-wise
-      - command: V
-        description: Start visual mode line-wise
-      - command: "Ctrl+v"
-        description: Start visual block mode
-      - command: y
-        description: Yank (copy) selected text
-      - command: d
-        description: Delete selected text
+      - command: "dd / yy / cc"
+        description: "Delete/yank/change entire line"
+      - command: "D / C"
+        description: "Delete/change to end of line"
+      - command: "J"
+        description: "Join line below to current line"
+      - command: "gJ"
+        description: "Join without space"
+      - command: "u / Ctrl+r"
+        description: "Undo / redo"
+      - command: "U"
+        description: "Undo all changes on line"
+      - command: ". (dot)"
+        description: "Repeat last change"
       - command: ">"
-        description: Indent selected text right
+        description: "Indent right (works with motions/visual)"
       - command: "<"
-        description: Indent selected text left
-  - name: Searching and Replacing
-    column: 2
+        description: "Indent left"
+      - command: "=="
+        description: "Auto-indent current line"
+      - command: "gg=G"
+        description: "Auto-indent entire file"
+      - command: "~"
+        description: "Toggle case of character"
+      - command: "gUiw / guiw"
+        description: "Uppercase/lowercase inner word"
+      - command: "Ctrl+a / Ctrl+x"
+        description: "Increment/decrement number"
+      - command: "r<char>"
+        description: "Replace single character"
+      - command: "R"
+        description: "Enter replace mode"
+      - command: "Ctrl+n / Ctrl+p"
+        description: "Auto-complete (next/previous match)"
+
+  - name: Visual Mode & Selection
+    column: 1
     items:
-      - command: "/pattern"
-        description: Search forward for 'pattern'
-      - command: "?pattern"
-        description: Search backward for 'pattern'
-      - command: n
-        description: Repeat search in same direction
-      - command: N
-        description: Repeat search in opposite direction
+      - command: "v"
+        description: "Character-wise visual mode"
+      - command: "V"
+        description: "Line-wise visual mode"
+      - command: "Ctrl+v"
+        description: "Block/column visual mode"
+      - command: "gv"
+        description: "Reselect last visual selection"
+      - command: "o"
+        description: "Move to other end of selection"
+      - command: "I (in block mode)"
+        description: "Insert at start of each line"
+      - command: "A (in block mode)"
+        description: "Append at end of each line"
+      - command: "c (in visual)"
+        description: "Change selected text"
+      - command: "> / < (in visual)"
+        description: "Indent selected lines"
+
+  - name: Search & Replace
+    column: 1
+    items:
       - command: ":%s/old/new/g"
-        description: Replace all occurrences of 'old' with 'new' in the file
+        description: "Replace all in file"
       - command: ":%s/old/new/gc"
-        description: Replace all occurrences with confirmation
-  - name: Working with Files
+        description: "Replace with confirmation"
+      - command: ":s/old/new/g"
+        description: "Replace in current line"
+      - command: ":'<,'>s/old/new/g"
+        description: "Replace in visual selection"
+      - command: ":%s/\\v(pattern)/\\1/g"
+        description: "Very magic mode (cleaner regex)"
+      - command: ":g/pattern/d"
+        description: "Delete all lines matching pattern"
+      - command: ":v/pattern/d"
+        description: "Delete lines NOT matching pattern"
+      - command: ":g/pattern/normal @q"
+        description: "Execute macro on matching lines"
+
+  - name: Windows & Buffers
     column: 2
     items:
-      - command: ":e filename"
-        description: Open 'filename' for editing
-      - command: ":w"
-        description: Save the current file
-      - command: ":w filename"
-        description: Save as 'filename'
-      - command: ":q"
-        description: Quit Vim
-      - command: ":wq"
-        description: Save and quit
-      - command: ":q!"
-        description: Quit without saving changes
-      - command: ":e!"
-        description: Reload file discarding changes
-  - name: Buffers and Windows
-    column: 2
-    items:
-      - command: ":ls"
-        description: List open buffers
-      - command: ":b [number]"
-        description: Switch to buffer [number]
-      - command: ":bd [number]"
-        description: Delete buffer [number]
-      - command: ":split filename"
-        description: Split window and open 'filename'
-      - command: ":vsplit filename"
-        description: Vertical split with 'filename'
       - command: "Ctrl+w s"
-        description: Split window horizontally
+        description: "Split window horizontally"
       - command: "Ctrl+w v"
-        description: Split window vertically
+        description: "Split window vertically"
+      - command: "Ctrl+w h/j/k/l"
+        description: "Navigate to window left/down/up/right"
       - command: "Ctrl+w w"
-        description: Switch between windows
+        description: "Cycle through windows"
       - command: "Ctrl+w q"
-        description: Close current window
-  - name: Tabs
+        description: "Close current window"
+      - command: "Ctrl+w o"
+        description: "Close all other windows"
+      - command: "Ctrl+w ="
+        description: "Make windows equal size"
+      - command: "Ctrl+w +/-"
+        description: "Increase/decrease window height"
+      - command: "Ctrl+w >/<"
+        description: "Increase/decrease window width"
+      - command: ":bn / :bp"
+        description: "Next/previous buffer"
+      - command: ":b#"
+        description: "Switch to alternate buffer"
+      - command: ":bd"
+        description: "Delete (close) buffer"
+      - command: ":ls"
+        description: "List all buffers"
+      - command: ":b <name>"
+        description: "Switch to buffer by name"
+
+  - name: Code Folding
     column: 2
     items:
-      - command: ":tabnew filename"
-        description: Open 'filename' in a new tab
-      - command: gt
-        description: Move to next tab
-      - command: gT
-        description: Move to previous tab
-      - command: ":tabc"
-        description: Close current tab
-      - command: ":tabs"
-        description: List all open tabs
+      - command: "zf"
+        description: "Create fold (with motion)"
+      - command: "zo"
+        description: "Open fold under cursor"
+      - command: "zc"
+        description: "Close fold under cursor"
+      - command: "za"
+        description: "Toggle fold under cursor"
+      - command: "zR"
+        description: "Open all folds"
+      - command: "zM"
+        description: "Close all folds"
+      - command: "zj / zk"
+        description: "Move to next/previous fold"
+      - command: ":set foldmethod=indent"
+        description: "Fold by indentation"
+      - command: ":set foldmethod=syntax"
+        description: "Fold by syntax"
+      - command: ":set foldlevel=99"
+        description: "Start with all folds open"
+
   - name: Macros
     column: 2
     items:
       - command: "qa"
-        description: Start recording macro into register 'a'
-      - command: q
-        description: Stop recording macro
+        description: "Start recording macro in register 'a'"
+      - command: "q"
+        description: "Stop recording macro"
       - command: "@a"
-        description: Play macro from register 'a'
+        description: "Execute macro from register 'a'"
       - command: "@@"
-        description: Replay last executed macro
-  - name: Marks
-    column: 2
-    items:
-      - command: "ma"
-        description: Set mark 'a' at current cursor position
-      - command: "'a"
-        description: Jump to line of mark 'a'
-      - command: "`a"
-        description: Jump to exact position of mark 'a'
-      - command: ":marks"
-        description: List all marks
-  - name: Registers
-    column: 2
-    items:
-      - command: '":reg"'
-        description: Display contents of all registers
-      - command: '"ayy'
-        description: Yank current line into register 'a'
+        description: "Repeat last executed macro"
+      - command: "5@a"
+        description: "Execute macro 5 times"
+      - command: ":g/pattern/normal @a"
+        description: "Run macro on all matching lines"
+      - command: ":argdo normal @a"
+        description: "Run macro on all files in arglist"
       - command: '"ap'
-        description: Paste contents of register 'a'
-      - command: '"adw'
-        description: Delete word into register 'a'
-  - name: Miscellaneous
-    column: 1
+        description: "Paste contents of macro register 'a'"
+
+  - name: Quickfix & Location Lists
+    column: 2
     items:
-      - command: "."
-        description: Repeat last change
-      - command: "%"
-        description: Jump to matching bracket
-      - command: ":help [topic]"
-        description: Open help for 'topic'
-      - command: ":set number"
-        description: Show line numbers
-      - command: ":set nonumber"
-        description: Hide line numbers
-      - command: ":set ignorecase"
-        description: Ignore case in searches
-      - command: ":set noignorecase"
-        description: Case-sensitive searches
-      - command: ":set incsearch"
-        description: Show search matches as you type
-      - command: ":set hlsearch"
-        description: Highlight search matches
-      - command: ":noh"
-        description: Remove search highlighting
+      - command: ":copen / :cclose"
+        description: "Open/close quickfix window"
+      - command: ":lopen / :lclose"
+        description: "Open/close location list window"
+      - command: ":cnext / :cprev"
+        description: "Next/previous quickfix item"
+      - command: ":lnext / :lprev"
+        description: "Next/previous location item"
+      - command: "]q / [q"
+        description: "Next/previous quickfix (with unimpaired)"
+      - command: ":cfirst / :clast"
+        description: "First/last quickfix item"
+      - command: ":colder / :cnewer"
+        description: "Older/newer quickfix list"
+      - command: ":cdo <cmd>"
+        description: "Execute command on each quickfix entry"
+      - command: ":cfdo <cmd>"
+        description: "Execute command on each quickfix file"
+      - command: ":vimgrep /pattern/ **/*.py"
+        description: "Search pattern in files, populate quickfix"
+      - command: ":make"
+        description: "Run make, populate quickfix with errors"
+
+  - name: Python - LSP (coc.nvim/pyright)
+    column: 2
+    items:
+      - command: "gd"
+        description: "Go to definition (mapped to coc)"
+      - command: "gr"
+        description: "Find references (mapped to coc)"
+      - command: "K"
+        description: "Show documentation/hover"
+      - command: "<leader>rn"
+        description: "Rename symbol"
+      - command: "<leader>ca"
+        description: "Code actions (import, fix, etc)"
+      - command: "[d / ]d"
+        description: "Previous/next diagnostic"
+      - command: ":CocList diagnostics"
+        description: "Show all diagnostics"
+      - command: ":CocCommand python.setInterpreter"
+        description: "Select Python interpreter/virtualenv"
+      - command: ":CocRestart"
+        description: "Restart language server"
+
+  - name: Python - Linting (ALE)
+    column: 2
+    items:
+      - command: "<C-k> / <C-j>"
+        description: "Previous/next linting error"
+      - command: ":ALEFix"
+        description: "Run configured fixers (black, isort)"
+      - command: ":ALEToggle"
+        description: "Toggle linting on/off"
+      - command: ":ALEDetail"
+        description: "Show full error message"
+      - command: ":ALEInfo"
+        description: "Show ALE configuration info"
+      - command: ":let g:ale_fix_on_save=1"
+        description: "Enable auto-fix on save"
+
+  - name: Python - Testing (vim-test)
+    column: 2
+    items:
+      - command: ":TestNearest"
+        description: "Run test at cursor (function/class)"
+      - command: ":TestFile"
+        description: "Run all tests in current file"
+      - command: ":TestSuite"
+        description: "Run entire test suite"
+      - command: ":TestLast"
+        description: "Re-run last test"
+      - command: ":TestVisit"
+        description: "Jump to last run test"
+      - command: "<leader>tn"
+        description: "TestNearest (custom mapping)"
+      - command: "<leader>tf"
+        description: "TestFile (custom mapping)"
+
+  - name: Python - Debugging (vimspector)
+    column: 2
+    items:
+      - command: "<F5>"
+        description: "Start/continue debugging"
+      - command: "<F9>"
+        description: "Toggle breakpoint at cursor"
+      - command: "<F10>"
+        description: "Step over"
+      - command: "<F11>"
+        description: "Step into"
+      - command: "<F12>"
+        description: "Step out"
+      - command: "<leader>di"
+        description: "Inspect variable under cursor"
+      - command: ":VimspectorReset"
+        description: "Stop debugging and reset"
+      - command: ":VimspectorWatch <expr>"
+        description: "Add watch expression"
+
+  - name: C/C++ - LSP (clangd)
+    column: 3
+    items:
+      - command: "gd"
+        description: "Go to definition"
+      - command: "gD"
+        description: "Go to declaration"
+      - command: "gr"
+        description: "Find references"
+      - command: "gi"
+        description: "Go to implementation"
+      - command: "K"
+        description: "Show documentation"
+      - command: "<leader>rn"
+        description: "Rename symbol"
+      - command: ":CocCommand clangd.switchSourceHeader"
+        description: "Switch between .h and .cpp"
+      - command: ":CocCommand clangd.symbolInfo"
+        description: "Show symbol information"
+      - command: "[d / ]d"
+        description: "Previous/next diagnostic"
+
+  - name: C/C++ - Build Systems
+    column: 3
+    items:
+      - command: ":make"
+        description: "Run make, populate quickfix"
+      - command: ":AsyncRun make -j$(nproc)"
+        description: "Build asynchronously"
+      - command: ":AsyncRun cmake --build build"
+        description: "Build CMake project"
+      - command: ":CMakeGenerate"
+        description: "Generate CMake build files"
+      - command: ":CMakeBuild"
+        description: "Build CMake project"
+      - command: ":CMakeSwitch Debug"
+        description: "Switch to Debug build"
+      - command: ":CMakeSwitch Release"
+        description: "Switch to Release build"
+      - command: ":set makeprg=cmake\\ --build\\ build"
+        description: "Set custom make program"
+
+  - name: C/C++ - Debugging (termdebug/GDB)
+    column: 3
+    items:
+      - command: ":Termdebug ./program"
+        description: "Start GDB debugging session"
+      - command: ":Break"
+        description: "Set breakpoint at cursor"
+      - command: ":Clear"
+        description: "Clear breakpoint at cursor"
+      - command: ":Run"
+        description: "Start/restart program"
+      - command: ":Continue"
+        description: "Continue execution"
+      - command: ":Step"
+        description: "Step into"
+      - command: ":Over"
+        description: "Step over"
+      - command: ":Finish"
+        description: "Step out (finish current function)"
+      - command: ":Evaluate <expr>"
+        description: "Evaluate expression in GDB"
+      - command: ":Program"
+        description: "Focus program window"
+      - command: ":Source"
+        description: "Focus source window"
+
+  - name: C/C++ - Formatting (clang-format)
+    column: 3
+    items:
+      - command: ":ClangFormat"
+        description: "Format current buffer"
+      - command: ":'<,'>ClangFormat"
+        description: "Format visual selection"
+      - command: ":let g:clang_format#auto_format=1"
+        description: "Enable format on save"
+      - command: ":ClangFormatAutoToggle"
+        description: "Toggle auto-format on save"
+
+  - name: C/C++ - Header/Source Switching
+    column: 3
+    items:
+      - command: ":FSHere"
+        description: "Switch to corresponding .h/.cpp"
+      - command: ":FSRight"
+        description: "Open corresponding file in split"
+      - command: ":FSSplitRight"
+        description: "Open in vertical split"
+      - command: "<leader>a"
+        description: "Switch header/source (custom map)"
+
+  - name: Git Integration (fugitive)
+    column: 3
+    items:
+      - command: ":G or :Git"
+        description: "Open Git status"
+      - command: ":Git add %"
+        description: "Stage current file"
+      - command: ":Git commit"
+        description: "Commit staged changes"
+      - command: ":Git push"
+        description: "Push to remote"
+      - command: ":Git pull"
+        description: "Pull from remote"
+      - command: ":Git blame"
+        description: "Show Git blame"
+      - command: ":GBrowse"
+        description: "Open file on GitHub/GitLab"
+      - command: ":Gdiffsplit"
+        description: "Diff current file"
+      - command: "dp / do"
+        description: "Put/obtain diff hunk (in diff mode)"
+      - command: ":Git log"
+        description: "Show Git log"
+      - command: ":Gwrite"
+        description: "Stage current file (save & git add)"
+      - command: ":Gread"
+        description: "Revert to last committed version"
+
+  - name: Git - Status Window Actions
+    column: 3
+    items:
+      - command: "s"
+        description: "Stage file/hunk under cursor"
+      - command: "u"
+        description: "Unstage file/hunk"
+      - command: "-"
+        description: "Toggle stage/unstage"
+      - command: "="
+        description: "Toggle inline diff"
+      - command: "cc"
+        description: "Commit staged changes"
+      - command: "ca"
+        description: "Commit amend"
+      - command: "X"
+        description: "Discard change under cursor"
+      - command: "dv"
+        description: "Vertical diff"
+      - command: "dd"
+        description: "Diff (horizontal)"
+
+  - name: LSP Generic (Neovim Native)
+    column: 3
+    items:
+      - command: "vim.lsp.buf.definition()"
+        description: "Go to definition"
+      - command: "vim.lsp.buf.references()"
+        description: "Find references"
+      - command: "vim.lsp.buf.hover()"
+        description: "Show hover documentation"
+      - command: "vim.lsp.buf.rename()"
+        description: "Rename symbol"
+      - command: "vim.lsp.buf.code_action()"
+        description: "Show code actions"
+      - command: "vim.lsp.buf.format()"
+        description: "Format buffer"
+      - command: "vim.diagnostic.goto_next()"
+        description: "Next diagnostic"
+      - command: "vim.diagnostic.goto_prev()"
+        description: "Previous diagnostic"
+      - command: "vim.diagnostic.open_float()"
+        description: "Show diagnostic in float"
+
+  - name: Neovim - Telescope
+    column: 3
+    items:
+      - command: ":Telescope find_files"
+        description: "Fuzzy find files"
+      - command: ":Telescope live_grep"
+        description: "Search in files (ripgrep)"
+      - command: ":Telescope buffers"
+        description: "List open buffers"
+      - command: ":Telescope help_tags"
+        description: "Search help documentation"
+      - command: ":Telescope lsp_references"
+        description: "List LSP references"
+      - command: ":Telescope lsp_definitions"
+        description: "List LSP definitions"
+      - command: ":Telescope diagnostics"
+        description: "List all diagnostics"
+      - command: ":Telescope git_files"
+        description: "Find files tracked by Git"
+      - command: "<leader>ff"
+        description: "Find files (custom mapping)"
+      - command: "<leader>fg"
+        description: "Live grep (custom mapping)"
+
+  - name: Snippets (UltiSnips)
+    column: 3
+    items:
+      - command: "<Tab>"
+        description: "Expand snippet"
+      - command: "<C-j>"
+        description: "Jump to next placeholder"
+      - command: "<C-k>"
+        description: "Jump to previous placeholder"
+      - command: ":UltiSnipsEdit"
+        description: "Edit snippets for current filetype"
+      - command: ":UltiSnipsAddFiletypes <type>"
+        description: "Add filetype for snippets"
+
+  - name: Sessions & Tabs
+    column: 3
+    items:
+      - command: ":mksession ~/session.vim"
+        description: "Save session"
+      - command: ":source ~/session.vim"
+        description: "Load session"
+      - command: ":tabnew"
+        description: "Create new tab"
+      - command: ":tabnew <file>"
+        description: "Open file in new tab"
+      - command: "gt / gT"
+        description: "Next/previous tab"
+      - command: ":tabclose"
+        description: "Close current tab"
+      - command: ":tabonly"
+        description: "Close all other tabs"
+      - command: ":<N>gt"
+        description: "Go to tab number N"
+
+  - name: Tags & Cscope
+    column: 3
+    items:
+      - command: ":!ctags -R ."
+        description: "Generate tags for project"
+      - command: "Ctrl+]"
+        description: "Jump to tag definition"
+      - command: "Ctrl+t"
+        description: "Return from tag jump"
+      - command: ":tag <name>"
+        description: "Jump to tag by name"
+      - command: ":tn / :tp"
+        description: "Next/previous tag match"
+      - command: ":ts"
+        description: "List all tag matches"
+      - command: ":cscope find s <symbol>"
+        description: "Find symbol references (cscope)"
+      - command: ":cscope find g <symbol>"
+        description: "Find symbol definition (cscope)"
