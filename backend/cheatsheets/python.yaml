@@ -1,0 +1,213 @@
+title: Python Cheat Sheet
+columns: 3
+categories:
+  - name: Basics
+    column: 1
+    items:
+      - command: "python my_script.py"
+        description: Run a Python script
+      - command: "python -m module_name"
+        description: Run a module as a script
+      - command: "print('Hello, World!')"
+        description: Print to the console
+      - command: "type(variable)"
+        description: Get the type of a variable
+      - command: "isinstance(obj, cls)"
+        description: Check if an object is an instance of a class
+      - command: "help(obj)"
+        description: Get documentation for an object
+
+  - name: Data Types
+    column: 1
+    items:
+      - command: "int, float, str, bool"
+        description: Basic data types
+      - command: "list, tuple, dict, set"
+        description: Collection data types
+      - command: "None"
+        description: Represents a null value
+      - command: "complex"
+        description: Complex number type
+
+  - name: Operators
+    column: 1
+    items:
+      - command: "+, -, *, /, //, %"
+        description: Arithmetic operators
+      - command: "and, or, not"
+        description: Logical operators
+      - command: "==, !=, >, <, >=, <="
+        description: Comparison operators
+      - command: "is, is not"
+        description: Identity operators
+      - command: "in, not in"
+        description: Membership operators
+
+  - name: Control Flow
+    column: 1
+    items:
+      - command: |
+          if condition:
+              # code
+          elif another_condition:
+              # code
+          else:
+              # code
+        description: Conditional statements
+      - command: |
+          for item in iterable:
+              # code
+        description: For loop
+      - command: |
+          while condition:
+              # code
+        description: While loop
+      - command: "break, continue, pass"
+        description: Loop control statements
+
+  - name: Functions
+    column: 2
+    items:
+      - command: |
+          def function_name(params):
+              # code
+              return value
+        description: Define a function
+      - command: "lambda x: x + 1"
+        description: Anonymous function
+      - command: "def func(*args):"
+        description: Function with variable positional arguments
+      - command: "def func(**kwargs):"
+        description: Function with keyword arguments
+      - command: "global var"
+        description: Declare a global variable
+      - command: "nonlocal var"
+        description: Use a non-local variable in nested functions
+
+  - name: Collections
+    column: 2
+    items:
+      - command: "[1, 2, 3]"
+        description: List
+      - command: "(1, 2, 3)"
+        description: Tuple
+      - command: "{'key': 'value'}"
+        description: Dictionary
+      - command: "{1, 2, 3}"
+        description: Set
+      - command: "list.append(x)"
+        description: Add an item to a list
+      - command: "list.pop(i)"
+        description: Remove an item from a list by index
+      - command: "dict.get(key)"
+        description: Get a value from a dictionary
+
+  - name: File Handling
+    column: 2
+    items:
+      - command: |
+          with open('file.txt', 'r') as file:
+              data = file.read()
+        description: Read from a file
+      - command: |
+          with open('file.txt', 'w') as file:
+              file.write('content')
+        description: Write to a file
+      - command: "file.readlines()"
+        description: Read all lines from a file as a list
+      - command: "file.readline()"
+        description: Read the next line from a file
+
+  - name: Exception Handling
+    column: 2
+    items:
+      - command: |
+          try:
+              # code
+          except Exception as e:
+              # handle exception
+          else:
+              # code if no exceptions
+          finally:
+              # cleanup code
+        description: Exception handling structure
+      - command: "raise Exception('Error')"
+        description: Raise an exception
+      - command: "assert condition, 'Error'"
+        description: Assert statement
+
+  - name: Modules
+    column: 3
+    items:
+      - command: "import module"
+        description: Import a module
+      - command: "from module import function"
+        description: Import specific function from a module
+      - command: "import module as alias"
+        description: Import a module with an alias
+      - command: "dir(module)"
+        description: List all functions and attributes in a module
+
+  - name: Common Libraries
+    column: 3
+    items:
+      - command: "import os"
+        description: OS and file system operations
+      - command: "import sys"
+        description: Access system-specific parameters
+      - command: "import math"
+        description: Mathematical functions
+      - command: "import random"
+        description: Generate random numbers
+      - command: "import datetime"
+        description: Work with dates and times
+      - command: "import re"
+        description: Regular expressions
+
+  - name: Object-Oriented Programming
+    column: 3
+    items:
+      - command: |
+          class ClassName:
+              def __init__(self, args):
+                  # initializer
+        description: Define a class
+      - command: "obj = ClassName(args)"
+        description: Create an object
+      - command: "class SubClass(ParentClass):"
+        description: Inherit from a parent class
+      - command: "super().__init__(args)"
+        description: Call a parent class's initializer
+      - command: "staticmethod"
+        description: Define a static method
+      - command: "classmethod"
+        description: Define a class method
+
+  - name: Decorators
+    column: 3
+    items:
+      - command: "@decorator"
+        description: Apply a decorator to a function
+      - command: |
+          def decorator(func):
+              def wrapper(*args, **kwargs):
+                  # code
+                  return func(*args, **kwargs)
+              return wrapper
+        description: Create a decorator
+
+  - name: Testing
+    column: 3
+    items:
+      - command: "import unittest"
+        description: Unit testing library
+      - command: |
+          class TestClass(unittest.TestCase):
+              def test_method(self):
+                  self.assertEqual(actual, expected)
+        description: Define a test case
+      - command: "pytest test_file.py"
+        description: Run tests with pytest
+      - command: "assert condition"
+        description: Assert a condition in tests
+

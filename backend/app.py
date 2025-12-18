@@ -22,11 +22,26 @@ def get_cheatsheets():
 def get_cheatsheet(name):
     try:
         cheatsheet = CheatSheet(name).load()
-        return jsonify({'name': name, 'data': cheatsheet.data})
+        response_data = {
+            'name': name,
+            'columns': cheatsheet.columns,
+            'categories': cheatsheet.categories,
+            'data': cheatsheet.data  # Include other necessary data
+        }
+        return jsonify(response_data)
     except FileNotFoundError:
         abort(404, description="Cheat sheet not found.")
 
-@app.route('/api/cheatsheets', methods=['POST'])
+@app.route('/api/cheatsheets/<name>', methods=['POST'])
+def save_cheatsheet(name):
+    data = request.get_json()
+    if not data:
+        abort(400, description="Invalid data.")
+    cheatsheet = CheatSheet(name, data)
+    cheatsheet.save()
+    return jsonify({'message': 'Cheat sheet saved successfully.'}), 201
+
+@app.route('/api/cheatsheets/', methods=['POST'])
 def create_cheatsheet():
     data = request.get_json()
     name = data.get('name')
@@ -56,4 +71,3 @@ def delete_cheatsheet(name):
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=5000)
-

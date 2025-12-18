@@ -1,0 +1,321 @@
+title: C Language Cheat Sheet
+columns: 2
+categories:
+  - name: Syntax Basics
+    column: 1
+    items:
+      - command: |
+          #include <stdio.h>
+        description: Include standard I/O library
+      - command: |
+          int main() {
+              // code
+              return 0;
+          }
+        description: Entry point of a C program
+      - command: "// Single-line comment"
+        description: Single-line comment
+      - command: "/* Multi-line comment */"
+        description: Multi-line comment
+
+  - name: Data Types
+    column: 1
+    items:
+      - command: "int, char, float, double"
+        description: Basic data types
+      - command: "short, long, unsigned, signed"
+        description: Type modifiers
+      - command: "_Bool, _Complex, _Imaginary"
+        description: Other standard types
+
+  - name: Variables and Constants
+    column: 1
+    items:
+      - command: "int num = 10;"
+        description: Declare and initialize an integer variable
+      - command: "const float PI = 3.14;"
+        description: Define a constant
+      - command: "volatile int counter;"
+        description: Volatile variable (can be modified externally)
+      - command: "register int i;"
+        description: Register variable (stored in CPU register)
+
+  - name: Operators
+    column: 1
+    items:
+      - command: "+, -, *, /, %"
+        description: Arithmetic operators
+      - command: "++, --"
+        description: Increment and decrement
+      - command: "==, !=, >, <, >=, <="
+        description: Relational operators
+      - command: "&&, ||, !"
+        description: Logical operators
+      - command: "&, |, ^, ~, <<, >>"
+        description: Bitwise operators
+      - command: "=, +=, -=, *=, /="
+        description: Assignment operators
+      - command: "sizeof(type)"
+        description: Size of data type or variable
+
+  - name: Control Flow
+    column: 1
+    items:
+      - command: |
+          if (condition) {
+              // code
+          } else {
+              // code
+          }
+        description: Conditional statement
+      - command: |
+          for (initialization; condition; increment) {
+              // code
+          }
+        description: For loop
+      - command: |
+          while (condition) {
+              // code
+          }
+        description: While loop
+      - command: |
+          do {
+              // code
+          } while (condition);
+        description: Do-while loop
+      - command: |
+          switch (expression) {
+              case value1:
+                  // code
+                  break;
+              default:
+                  // code
+          }
+        description: Switch statement
+
+  - name: Functions
+    column: 1
+    items:
+      - command: |
+          return_type function_name(parameter_list) {
+              // code
+              return value;
+          }
+        description: Function definition
+      - command: "void function_name(void);"
+        description: Function declaration with no parameters
+      - command: "function_name(arguments);"
+        description: Function call
+      - command: "static return_type function_name()"
+        description: Static function (internal linkage)
+
+  - name: Arrays
+    column: 2
+    items:
+      - command: "int arr[10];"
+        description: Declare an integer array of size 10
+      - command: "int arr[] = {1, 2, 3};"
+        description: Initialize an array
+      - command: "arr[index]"
+        description: Access array element
+      - command: "int matrix[3][4];"
+        description: Multidimensional array
+
+  - name: Pointers
+    column: 2
+    items:
+      - command: "int *ptr;"
+        description: Declare a pointer to int
+      - command: "ptr = &variable;"
+        description: Assign address of variable to pointer
+      - command: "*ptr"
+        description: Dereference pointer
+      - command: "ptr = malloc(sizeof(int));"
+        description: Dynamic memory allocation
+      - command: "free(ptr);"
+        description: Free allocated memory
+      - command: "int **ptr2;"
+        description: Pointer to a pointer
+
+  - name: Strings
+    column: 2
+    items:
+      - command: 'char str[] = "Hello";'
+        description: Declare and initialize a string
+      - command: "strcpy(dest, src);"
+        description: Copy string
+      - command: "strcat(dest, src);"
+        description: Concatenate strings
+      - command: "strlen(str);"
+        description: Get string length
+      - command: "strcmp(str1, str2);"
+        description: Compare two strings
+      - command: "sprintf(buffer, \"format\", variables);"
+        description: Write formatted data to string
+
+  - name: Structures and Unions
+    column: 2
+    items:
+      - command: |
+          struct StructName {
+              data_type member1;
+              data_type member2;
+          };
+        description: Define a structure
+      - command: "struct StructName var;"
+        description: Declare a structure variable
+      - command: "var.member1"
+        description: Access structure member
+      - command: |
+          union UnionName {
+              data_type member1;
+              data_type member2;
+          };
+        description: Define a union
+      - command: "typedef existing_type new_type;"
+        description: Create an alias for a data type
+
+  - name: Enumerations
+    column: 2
+    items:
+      - command: |
+          enum Day {
+              MON, TUE, WED, THU, FRI, SAT, SUN
+          };
+        description: Define an enumeration
+      - command: "enum Day today = MON;"
+        description: Declare and initialize an enum variable
+
+  - name: Input/Output
+    column: 2
+    items:
+      - command: 'printf("format", variables);'
+        description: Print formatted data to standard output
+      - command: 'scanf("format", &variables);'
+        description: Read formatted input from standard input
+      - command: "fprintf(fp, \"format\", variables);"
+        description: Write formatted data to a file
+      - command: "fscanf(fp, \"format\", &variables);"
+        description: Read formatted data from a file
+      - command: "getchar();"
+        description: Read a character from stdin
+      - command: "putchar(ch);"
+        description: Write a character to stdout
+
+  - name: File Operations
+    column: 2
+    items:
+      - command: "FILE *fp;"
+        description: Declare a file pointer
+      - command: 'fp = fopen("filename", "mode");'
+        description: Open a file
+      - command: "fclose(fp);"
+        description: Close a file
+      - command: "fgetc(fp);"
+        description: Read a character from a file
+      - command: "fputc(ch, fp);"
+        description: Write a character to a file
+      - command: "fgets(buffer, size, fp);"
+        description: Read a string from a file
+      - command: "fputs(str, fp);"
+        description: Write a string to a file
+
+  - name: Preprocessor Directives
+    column: 2
+    items:
+      - command: "#define MACRO_NAME value"
+        description: Define a macro
+      - command: "#include <header.h>"
+        description: Include a system header file
+      - command: '#include "header.h"'
+        description: Include a local header file
+      - command: "#ifdef, #ifndef, #endif"
+        description: Conditional compilation
+      - command: "#undef MACRO_NAME"
+        description: Undefine a macro
+      - command: "#pragma"
+        description: Special compiler instructions
+
+  - name: Memory Management
+    column: 2
+    items:
+      - command: "malloc(size);"
+        description: Allocate memory block
+      - command: "calloc(num, size);"
+        description: Allocate and zero-initialize array
+      - command: "realloc(ptr, new_size);"
+        description: Reallocate memory block
+      - command: "free(ptr);"
+        description: Deallocate memory
+
+  - name: Type Casting
+    column: 2
+    items:
+      - command: "(type) expression"
+        description: Type casting
+      - command: "int a = (int) 3.14;"
+        description: Cast float to int
+
+  - name: Command-Line Arguments
+    column: 2
+    items:
+      - command: |
+          int main(int argc, char *argv[]) {
+              // code
+          }
+        description: Access command-line arguments
+      - command: "argc"
+        description: Argument count
+      - command: "argv"
+        description: Argument vector (array of strings)
+
+  - name: Error Handling
+    column: 2
+    items:
+      - command: "errno"
+        description: Global variable for error codes
+      - command: "perror(message);"
+        description: Print error message
+      - command: "exit(status);"
+        description: Exit program with status code
+      - command: "assert(expression);"
+        description: Debugging macro to test assumptions
+
+  - name: Standard Libraries
+    column: 2
+    items:
+      - command: "#include <stdlib.h>"
+        description: General utilities
+      - command: "#include <string.h>"
+        description: String handling
+      - command: "#include <math.h>"
+        description: Mathematics functions
+      - command: "#include <time.h>"
+        description: Date and time functions
+      - command: "#include <ctype.h>"
+        description: Character handling functions
+      - command: "#include <errno.h>"
+        description: Error codes
+
+  - name: Macros and Inline Functions
+    column: 2
+    items:
+      - command: |
+          #define MAX(a,b) ((a) > (b) ? (a) : (b))
+        description: Macro with arguments
+      - command: "inline return_type function_name() { ... }"
+        description: Define an inline function
+
+  - name: Variable Argument Lists
+    column: 2
+    items:
+      - command: |
+          #include <stdarg.h>
+          void function_name(int num, ...) {
+              va_list args;
+              va_start(args, num);
+              // access args
+              va_end(args);
+          }
+        description: Function with variable number of arguments
+

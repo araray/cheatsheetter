@@ -9,12 +9,16 @@ class CheatSheet:
         self.name = name
         self.file_path = os.path.join(Config.CHEATSHEETS_FOLDER, f"{self.name}.yaml")
         self.data = data or {}
+        self.columns = self.data.get('columns', 1)
+        self.categories = self.data.get('categories', [])
 
     def load(self):
         if not os.path.exists(self.file_path):
             raise FileNotFoundError(f"Cheat sheet '{self.name}' not found.")
         with open(self.file_path, 'r') as file:
             self.data = yaml.safe_load(file)
+        self.columns = self.data.get('columns', 1)
+        self.categories = self.data.get('categories', [])
         return self
 
     def save(self):
@@ -33,4 +37,3 @@ class CheatSheet:
                 cheatsheet_name = os.path.splitext(file_name)[0]
                 cheatsheets.append(cheatsheet_name)
         return cheatsheets
-

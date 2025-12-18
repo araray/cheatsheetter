@@ -1,38 +1,33 @@
-version: '3.8'
+version: "3.8"
 
 services:
   backend:
-    build: ./backend
-    container_name: cheatsheet_backend
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: cheatsheet-backend
     ports:
-      - '5000:5000'
+      - "5000:5000"
     volumes:
       - ./backend/cheatsheets:/app/cheatsheets
     environment:
       - FLASK_ENV=production
-    depends_on:
-      - db
+      - FLASK_RUN_HOST=0.0.0.0
+      - CHEATSHEETS_FOLDER=/app/cheatsheets
+    networks:
+      - app-network
 
   frontend:
-    build: ./frontend
-    container_name: cheatsheet_frontend
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    container_name: cheatsheet-frontend
     ports:
-      - '8080:80'
-    environment:
-      - VUE_APP_API_URL=http://localhost:5000
+      - "8080:80"
+    networks:
+      - app-network
     depends_on:
       - backend
 
-  db:
-    image: postgres:13
-    container_name: cheatsheet_db
-    environment:
-      - POSTGRES_USER=cheatsheet_user
-      - POSTGRES_PASSWORD=cheatsheet_pass
-      - POSTGRES_DB=cheatsheet_db
-    volumes:
-      - db_data:/var/lib/postgresql/data
-
-volumes:
-  db_data:
-
+networks:
+  app-network:

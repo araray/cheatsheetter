@@ -1,0 +1,177 @@
+title: Emacs Cheat Sheet
+columns: 2
+categories:
+  - name: Basics
+    column: 1
+    items:
+      - command: "C-x C-f"
+        description: Open a file
+      - command: "C-x C-s"
+        description: Save a file
+      - command: "C-x C-w"
+        description: Save as (write to a new file)
+      - command: "C-x C-c"
+        description: Exit Emacs
+      - command: "C-g"
+        description: Cancel the current command
+      - command: "C-x u (or C-/)"
+        description: Undo
+
+  - name: Navigation
+    column: 1
+    items:
+      - command: "C-f / C-b"
+        description: Move forward/backward by one character
+      - command: "C-n / C-p"
+        description: Move to the next/previous line
+      - command: "M-f / M-b"
+        description: Move forward/backward by one word
+      - command: "C-a / C-e"
+        description: Move to the beginning/end of the line
+      - command: "M-< / M->"
+        description: Move to the beginning/end of the buffer
+      - command: "C-v / M-v"
+        description: Scroll down/up by one screen
+
+  - name: Buffers and Windows
+    column: 1
+    items:
+      - command: "C-x b"
+        description: Switch buffer
+      - command: "C-x C-b"
+        description: List all buffers
+      - command: "C-x k"
+        description: Kill (close) the current buffer
+      - command: "C-x 2"
+        description: Split window horizontally
+      - command: "C-x 3"
+        description: Split window vertically
+      - command: "C-x 0"
+        description: Close the current window
+      - command: "C-x 1"
+        description: Close all other windows
+      - command: "C-x o"
+        description: Switch to the next window
+
+  - name: Editing
+    column: 1
+    items:
+      - command: "C-d"
+        description: Delete the next character
+      - command: "M-d"
+        description: Delete the next word
+      - command: "C-k"
+        description: Kill (cut) to the end of the line
+      - command: "M-k"
+        description: Kill (cut) to the end of the sentence
+      - command: "C-y"
+        description: Yank (paste) from the kill ring
+      - command: "M-y"
+        description: Cycle through the kill ring after pasting
+      - command: "C-w"
+        description: Cut the selected region
+      - command: "M-w"
+        description: Copy the selected region
+
+  - name: Searching
+    column: 1
+    items:
+      - command: "C-s"
+        description: Search forward incrementally
+      - command: "C-r"
+        description: Search backward incrementally
+      - command: "M-%"
+        description: Query replace
+      - command: "C-M-%"
+        description: Replace using regular expressions
+
+  - name: Files and Directories
+    column: 2
+    items:
+      - command: "C-x d"
+        description: Open dired (file manager)
+      - command: "C-x C-q"
+        description: Toggle read-only mode in dired
+      - command: "C-x i"
+        description: Insert a file into the current buffer
+
+  - name: Customization
+    column: 2
+    items:
+      - command: "M-x customize"
+        description: Open the customization menu
+      - command: "M-x eval-buffer"
+        description: Evaluate the current buffer as Lisp
+      - command: "M-x eval-region"
+        description: Evaluate the selected region as Lisp
+      - command: "M-x eval-expression"
+        description: Evaluate a single Lisp expression
+
+  - name: Help
+    column: 2
+    items:
+      - command: "C-h t"
+        description: Open the Emacs tutorial
+      - command: "C-h k"
+        description: Describe a keybinding
+      - command: "C-h f"
+        description: Describe a function
+      - command: "C-h v"
+        description: Describe a variable
+      - command: "C-h a"
+        description: Search for commands matching a string
+      - command: "C-h b"
+        description: Show all keybindings
+      - command: "C-h i"
+        description: Open the Info documentation system
+
+  - name: Org Mode
+    column: 2
+    items:
+      - command: "M-x org-mode"
+        description: Enable Org mode in the current buffer
+      - command: "C-c C-t"
+        description: Toggle TODO state
+      - command: "C-c C-c"
+        description: Reevaluate a headline or block
+      - command: "C-c C-x C-l"
+        description: Log a note for a task
+      - command: "C-c C-o"
+        description: Open a link
+      - command: "M-x org-agenda"
+        description: Open the agenda view
+
+  - name: Macros
+    column: 2
+    items:
+      - command: "C-x ("
+        description: Start recording a macro
+      - command: "C-x )"
+        description: Stop recording a macro
+      - command: "C-x e"
+        description: Execute the last recorded macro
+      - command: "M-: (command)"
+        description: Run a macro multiple times
+
+  - name: Version Control (Magit)
+    column: 2
+    items:
+      - command: "M-x magit-status"
+        description: Show the status of a Git repository
+      - command: "M-x magit-commit"
+        description: Create a new commit
+      - command: "M-x magit-push"
+        description: Push changes to a remote repository
+      - command: "M-x magit-pull"
+        description: Pull changes from a remote repository
+
+  - name: Package Management
+    column: 2
+    items:
+      - command: "M-x list-packages"
+        description: Open the package manager
+      - command: "M-x package-install"
+        description: Install a new package
+      - command: "M-x package-delete"
+        description: Remove a package
+

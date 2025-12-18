@@ -1,6 +1,8 @@
 title: Vim Cheat Sheet
+columns: 2 # Number of columns to display
 categories:
   - name: Basic Movement
+    column: 1
     items:
       - command: h
         description: Move cursor left
@@ -14,17 +16,18 @@ categories:
         description: Move to next word
       - command: b
         description: Move to previous word
-      - command: '0'
+      - command: "0"
         description: Move to beginning of the line
-      - command: '$'
+      - command: "$"
         description: Move to end of the line
       - command: gg
         description: Go to the first line of the file
       - command: G
         description: Go to the last line of the file
-      - command: ':number'
+      - command: ":number"
         description: Go to line [number]
   - name: Insert Mode
+    column: 1
     items:
       - command: i
         description: Insert before the cursor
@@ -41,6 +44,7 @@ categories:
       - command: ESC
         description: Exit insert mode
   - name: Editing Text
+    column: 1
     items:
       - command: x
         description: Delete character under the cursor
@@ -56,115 +60,123 @@ categories:
         description: Paste before the cursor
       - command: u
         description: Undo the last action
-      - command: 'Ctrl+r'
+      - command: "Ctrl+r"
         description: Redo the last undone change
       - command: dw
         description: Delete word from cursor
       - command: cw
         description: Change (replace) word from cursor
-      - command: '~'
+      - command: "~"
         description: Switch case of character under cursor
       - command: J
         description: Join the next line to the current one
   - name: Visual Mode
+    column: 1
     items:
       - command: v
         description: Start visual mode character-wise
       - command: V
         description: Start visual mode line-wise
-      - command: 'Ctrl+v'
+      - command: "Ctrl+v"
         description: Start visual block mode
       - command: y
         description: Yank (copy) selected text
       - command: d
         description: Delete selected text
-      - command: '>'
+      - command: ">"
         description: Indent selected text right
-      - command: '<'
+      - command: "<"
         description: Indent selected text left
   - name: Searching and Replacing
+    column: 2
     items:
-      - command: '/pattern'
+      - command: "/pattern"
         description: Search forward for 'pattern'
-      - command: '?pattern'
+      - command: "?pattern"
         description: Search backward for 'pattern'
       - command: n
         description: Repeat search in same direction
       - command: N
         description: Repeat search in opposite direction
-      - command: ':%s/old/new/g'
+      - command: ":%s/old/new/g"
         description: Replace all occurrences of 'old' with 'new' in the file
-      - command: ':%s/old/new/gc'
+      - command: ":%s/old/new/gc"
         description: Replace all occurrences with confirmation
   - name: Working with Files
+    column: 2
     items:
-      - command: ':e filename'
+      - command: ":e filename"
         description: Open 'filename' for editing
-      - command: ':w'
+      - command: ":w"
         description: Save the current file
-      - command: ':w filename'
+      - command: ":w filename"
         description: Save as 'filename'
-      - command: ':q'
+      - command: ":q"
         description: Quit Vim
-      - command: ':wq'
+      - command: ":wq"
         description: Save and quit
-      - command: ':q!'
+      - command: ":q!"
         description: Quit without saving changes
-      - command: ':e!'
+      - command: ":e!"
         description: Reload file discarding changes
   - name: Buffers and Windows
+    column: 2
     items:
-      - command: ':ls'
+      - command: ":ls"
         description: List open buffers
-      - command: ':b [number]'
+      - command: ":b [number]"
         description: Switch to buffer [number]
-      - command: ':bd [number]'
+      - command: ":bd [number]"
         description: Delete buffer [number]
-      - command: ':split filename'
+      - command: ":split filename"
         description: Split window and open 'filename'
-      - command: ':vsplit filename'
+      - command: ":vsplit filename"
         description: Vertical split with 'filename'
-      - command: 'Ctrl+w s'
+      - command: "Ctrl+w s"
         description: Split window horizontally
-      - command: 'Ctrl+w v'
+      - command: "Ctrl+w v"
         description: Split window vertically
-      - command: 'Ctrl+w w'
+      - command: "Ctrl+w w"
         description: Switch between windows
-      - command: 'Ctrl+w q'
+      - command: "Ctrl+w q"
         description: Close current window
   - name: Tabs
+    column: 2
     items:
-      - command: ':tabnew filename'
+      - command: ":tabnew filename"
         description: Open 'filename' in a new tab
       - command: gt
         description: Move to next tab
       - command: gT
         description: Move to previous tab
-      - command: ':tabc'
+      - command: ":tabc"
         description: Close current tab
-      - command: ':tabs'
+      - command: ":tabs"
         description: List all open tabs
   - name: Macros
+    column: 2
     items:
-      - command: 'qa'
+      - command: "qa"
         description: Start recording macro into register 'a'
       - command: q
         description: Stop recording macro
-      - command: '@a'
+      - command: "@a"
         description: Play macro from register 'a'
-      - command: '@@'
+      - command: "@@"
         description: Replay last executed macro
   - name: Marks
+    column: 2
     items:
-      - command: 'ma'
+      - command: "ma"
         description: Set mark 'a' at current cursor position
       - command: "'a"
         description: Jump to line of mark 'a'
-      - command: '`a'
+      - command: "`a"
         description: Jump to exact position of mark 'a'
-      - command: ':marks'
+      - command: ":marks"
         description: List all marks
   - name: Registers
+    column: 2
     items:
       - command: '":reg"'
         description: Display contents of all registers
@@ -175,25 +187,25 @@ categories:
       - command: '"adw'
         description: Delete word into register 'a'
   - name: Miscellaneous
+    column: 1
     items:
-      - command: '.'
+      - command: "."
         description: Repeat last change
-      - command: '%'
+      - command: "%"
         description: Jump to matching bracket
-      - command: ':help [topic]'
+      - command: ":help [topic]"
         description: Open help for 'topic'
-      - command: ':set number'
+      - command: ":set number"
         description: Show line numbers
-      - command: ':set nonumber'
+      - command: ":set nonumber"
         description: Hide line numbers
-      - command: ':set ignorecase'
+      - command: ":set ignorecase"
         description: Ignore case in searches
-      - command: ':set noignorecase'
+      - command: ":set noignorecase"
         description: Case-sensitive searches
-      - command: ':set incsearch'
+      - command: ":set incsearch"
         description: Show search matches as you type
-      - command: ':set hlsearch'
+      - command: ":set hlsearch"
         description: Highlight search matches
-      - command: ':noh'
+      - command: ":noh"
         description: Remove search highlighting
-

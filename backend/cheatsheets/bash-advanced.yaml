@@ -1,0 +1,231 @@
+title: Advanced Bash Cheat Sheet
+columns: 3
+categories:
+  - name: Shell Scripting Basics
+    column: 1
+    items:
+      - command: "#!/bin/bash"
+        description: Declare the script interpreter
+      - command: "chmod +x script.sh"
+        description: Make a script executable
+      - command: "./script.sh"
+        description: Run a script
+      - command: "source script.sh"
+        description: Run a script in the current shell
+
+  - name: Variables
+    column: 1
+    items:
+      - command: "var=value"
+        description: Assign a value to a variable
+      - command: "$var"
+        description: Access variable value
+      - command: "${var}"
+        description: Use variable in complex strings
+      - command: "readonly var=value"
+        description: Declare a read-only variable
+      - command: "unset var"
+        description: Remove a variable
+
+  - name: Parameter Expansion
+    column: 1
+    items:
+      - command: "${var:-default}"
+        description: Use default value if variable is unset
+      - command: "${var:=default}"
+        description: Set default value if variable is unset
+      - command: "${var:+alt}"
+        description: Use alternative value if variable is set
+      - command: "${var:offset:length}"
+        description: Substring extraction
+      - command: "${#var}"
+        description: Get variable length
+      - command: "${var/pattern/replacement}"
+        description: Replace pattern in variable value
+
+  - name: Arrays
+    column: 1
+    items:
+      - command: "arr=(item1 item2 item3)"
+        description: Declare an array
+      - command: "${arr[index]}"
+        description: Access array element
+      - command: "${arr[@]}"
+        description: Access all elements
+      - command: "${#arr[@]}"
+        description: Get the array length
+      - command: "arr+=(item4)"
+        description: Append an item to an array
+      - command: "unset arr[index]"
+        description: Remove an element from an array
+
+  - name: Loops
+    column: 1
+    items:
+      - command: |
+          for var in list; do
+              # commands
+          done
+        description: For loop
+      - command: |
+          while condition; do
+              # commands
+          done
+        description: While loop
+      - command: |
+          until condition; do
+              # commands
+          done
+        description: Until loop
+      - command: |
+          for ((i=0; i<10; i++)); do
+              # commands
+          done
+        description: C-style for loop
+
+  - name: Conditional Statements
+    column: 2
+    items:
+      - command: |
+          if [ condition ]; then
+              # commands
+          elif [ condition ]; then
+              # commands
+          else
+              # commands
+          fi
+        description: If-else statement
+      - command: "[[ condition ]]"
+        description: Advanced test command (supports regex and string comparison)
+      - command: "(())"
+        description: Evaluate arithmetic expressions
+      - command: |
+          case value in
+              pattern1)
+                  # commands
+                  ;;
+              pattern2)
+                  # commands
+                  ;;
+          esac
+        description: Case statement
+
+  - name: Functions
+    column: 2
+    items:
+      - command: |
+          function_name() {
+              # commands
+          }
+        description: Define a function
+      - command: "function function_name { # commands; }"
+        description: Alternative function definition
+      - command: "function_name arguments"
+        description: Call a function
+      - command: "$#"
+        description: Number of arguments passed to a function
+      - command: "$1, $2, ..."
+        description: Access positional arguments
+      - command: "return value"
+        description: Return a value from a function
+      - command: "$FUNCNAME"
+        description: Current function name
+
+  - name: File Descriptors and Redirection
+    column: 2
+    items:
+      - command: "command > file"
+        description: Redirect stdout to a file
+      - command: "command >> file"
+        description: Append stdout to a file
+      - command: "command 2> file"
+        description: Redirect stderr to a file
+      - command: "command > file 2>&1"
+        description: Redirect both stdout and stderr to a file
+      - command: "command < file"
+        description: Redirect file content to stdin
+      - command: "command1 | command2"
+        description: Pipe stdout of one command to stdin of another
+
+  - name: Process Management
+    column: 2
+    items:
+      - command: "ps"
+        description: List active processes
+      - command: "top"
+        description: Display real-time process monitoring
+      - command: "kill PID"
+        description: Terminate a process by PID
+      - command: "killall process_name"
+        description: Terminate processes by name
+      - command: "jobs"
+        description: List background jobs
+      - command: "fg %job"
+        description: Bring a background job to the foreground
+      - command: "bg %job"
+        description: Resume a job in the background
+
+  - name: String Manipulation
+    column: 3
+    items:
+      - command: 'echo "${string,,}"'
+        description: Convert string to lowercase
+      - command: 'echo "${string^^}"'
+        description: Convert string to uppercase
+      - command: 'echo "${string:offset:length}"'
+        description: Extract substring
+      - command: 'echo "${string/pattern/replacement}"'
+        description: Replace first occurrence of pattern
+      - command: 'echo "${string//pattern/replacement}"'
+        description: Replace all occurrences of pattern
+      - command: 'echo "${string#pattern}"'
+        description: Remove shortest match of pattern from the start
+      - command: 'echo "${string##pattern}"'
+        description: Remove longest match of pattern from the start
+      - command: 'echo "${string%pattern}"'
+        description: Remove shortest match of pattern from the end
+      - command: 'echo "${string%%pattern}"'
+        description: Remove longest match of pattern from the end
+
+  - name: Debugging
+    column: 3
+    items:
+      - command: "bash -x script.sh"
+        description: Enable debug mode (prints commands as they execute)
+      - command: "set -x"
+        description: Enable debug mode within a script
+      - command: "set +x"
+        description: Disable debug mode
+      - command: "trap 'commands' SIGNAL"
+        description: Execute commands when a signal is received
+      - command: "trap DEBUG"
+        description: Debug every command in a script
+
+  - name: Advanced Tools and Techniques
+    column: 3
+    items:
+      - command: "$(command)"
+        description: Command substitution (captures output of a command)
+      - command: "array=($(command))"
+        description: Capture output of a command into an array
+      - command: "declare -A assoc_array"
+        description: Declare an associative array
+      - command: "${assoc_array[key]}"
+        description: Access associative array element
+      - command: "/bin/bash <<< 'script'"
+        description: Execute a string as a script
+      - command: "|&"
+        description: Pipe both stdout and stderr to another command
+
+  - name: Performance and Parallelism
+    column: 3
+    items:
+      - command: "command1 &"
+        description: Run a command in the background
+      - command: "wait"
+        description: Wait for background jobs to finish
+      - command: "xargs -P N"
+        description: Run tasks in parallel with N processes
+      - command: "for i in {1..N}; do (command &) done"
+        description: Run commands in parallel
+
