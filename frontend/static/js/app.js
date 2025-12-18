@@ -169,6 +169,7 @@
          * @param {Array} cheatsheets - Array of cheatsheet names
          */
         renderCheatsheetsList: function(cheatsheets) {
+            const self = this;
             const $container = $('#cheatsheets-container');
             $container.empty();
 
